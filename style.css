@@ -1,0 +1,191 @@
+/* Variáveis de Tema (O pulo do gato para o Dark/Light Mode) */
+:root {
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+/* Tema Escuro (Padrão) */
+body.dark-mode {
+    --bg-color: #050505;
+    --text-color: #F5F5F5;
+    --accent-color: #FFFFFF;
+    --btn-bg: #FFFFFF;
+    --btn-text: #000000;
+}
+
+/* Tema Claro */
+body.light-mode {
+    --bg-color: #F5F5F5;
+    --text-color: #050505;
+    --accent-color: #000000;
+    --btn-bg: #000000;
+    --btn-text: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: transparent;
+    backdrop-filter: blur(10px); /* Efeito vidro na rolagem */
+    z-index: 100;
+}
+
+.nav-logo {
+    height: 40px;
+    /* Truque: inverte as cores da imagem preta se o tema for claro */
+    transition: filter var(--transition-speed);
+}
+
+body.light-mode .nav-logo {
+    filter: invert(1);
+}
+
+.theme-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.shi-icon {
+    height: 30px;
+    transition: transform 0.3s ease, filter var(--transition-speed);
+}
+
+body.light-mode .shi-icon {
+    filter: invert(1);
+}
+
+.shi-icon:hover {
+    transform: rotate(15deg);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 6rem);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -2px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.8;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: transform 0.2s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-5px);
+}
+
+/* Sobre a Marca */
+.about-section {
+    padding: 5rem 5%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.concept-art {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 50%; /* Deixa a arte redonda */
+    transition: filter var(--transition-speed);
+}
+
+body.light-mode .concept-art {
+    filter: invert(1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem 5%;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.footer-shi {
+    height: 40px;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    transition: filter var(--transition-speed);
+}
+
+body.light-mode .footer-shi {
+    filter: invert(1);
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
