@@ -5,50 +5,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRIFFEN | Put Your Mind, Make It Happen</title>
-    <link rel="shortcut icon" href="assets/vetor.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/logo_jhi_preta.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap"
         rel="stylesheet">
 </head>
 
 <body class="dark-mode">
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="assets/ARTE-LADO.jpg" alt="Triffen Logo" class="nav-logo">
-        </div>
+    <nav class="navbar" aria-label="Principal">
+        <a href="#" class="logo-container">
+            <img src="assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png" alt="Triffen" class="nav-wordmark nav-wordmark--on-dark"
+                width="160" height="40">
+            <img src="assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-PRETA.png" alt="" class="nav-wordmark nav-wordmark--on-light"
+                width="160" height="40" aria-hidden="true">
+        </a>
         <div class="nav-actions">
-            <button id="theme-toggle" class="theme-btn" aria-label="Mudar tema">
-                <img src="assets/FRENTE-PNG.png" alt="Símbolo Shi" class="shi-icon">
+            <button type="button" id="theme-toggle" class="theme-btn" aria-label="Alternar tema claro ou escuro">
+                <img src="assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png" alt="" class="theme-icon theme-icon--on-dark" width="32" height="32">
+                <img src="assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-PRETA.png" alt="" class="theme-icon theme-icon--on-light" width="32" height="32"
+                    aria-hidden="true">
             </button>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>PUT YOUR MIND, <br><span class="highlight">MAKE IT HAPPEN.</span></h1>
-            <p>Mais que roupa, histórias. Identidade e atitude para quem escolhe o próprio caminho.</p>
-            <a href="https://www.instagram.com/triffen.oficial/" target="_blank" class="cta-button">Garantir o Drop
-                I</a>
-        </div>
-    </header>
+    <main>
+        <section class="cover" aria-label="Capa">
+            <div class="cover__frame">
+                <img src="assets/CAPA_TRIFFEN.jpeg" alt="Campanha Triffen — Put Your Mind, Make It Happen" class="cover__img" width="1920"
+                    height="1080" decoding="async" fetchpriority="high">
+            </div>
+        </section>
 
-    <section class="about-section">
-        <div class="about-grid">
-            <div class="about-text">
-                <h2>OS TRÊS CAMINHOS.</h2>
-                <p>Triffen nasce da ideia de que todos têm sonhos, decisões e histórias próprias. Representamos as
-                    escolhas da vida e as diferentes direções que você pode seguir.</p>
-                <p>Do bar à praia, do shopping à academia. Quem veste Triffen carrega presença e a coragem de fazer
-                    acontecer.</p>
+        <section class="manifesto" aria-labelledby="manifesto-heading">
+            <div class="manifesto__inner">
+                <h1 id="manifesto-heading">PUT YOUR MIND, <span class="manifesto__line">MAKE IT HAPPEN.</span></h1>
+                <p class="manifesto__lede">Mais que roupa, histórias. Identidade e atitude para quem escolhe o próprio caminho.</p>
             </div>
-            <div class="about-image">
-                <img src="assets/ARTE-FRENTE.jpg" alt="Triffen Concept" class="concept-art">
+        </section>
+
+        <section class="catalog" id="drop-1" aria-labelledby="catalog-heading">
+            <div class="catalog__inner">
+                <h2 id="catalog-heading" class="catalog__title">DROP I / ESSENTIALS</h2>
+
+                <div class="product-grid">
+                    <article class="product-card">
+                        <a class="product-card__link" href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20garantir%20a%20Triffen%20T-Shirt%20Oversized%20Bege."
+                            target="_blank" rel="noopener noreferrer">
+                            <div class="product-card__media">
+                                <img src="assets/TRIFFEN_camisa_bege_frente.jpg" alt="" class="product-card__img product-card__img--flat" width="800"
+                                    height="1000">
+                                <img src="assets/TRIFFEN_camisa_bege_modelo_f.jpg" alt="Modelo vestindo camiseta oversized bege Triffen"
+                                    class="product-card__img product-card__img--model" width="800" height="1000">
+                            </div>
+                            <div class="product-card__info">
+                                <h3 class="product-card__name">Triffen T-Shirt Oversized Bege</h3>
+                                <p class="product-card__price">R$&nbsp;149,90</p>
+                                <span class="product-card__cta">Garantir no WhatsApp</span>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="product-card">
+                        <a class="product-card__link" href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20garantir%20a%20Triffen%20T-Shirt%20Oversized%20Marrom."
+                            target="_blank" rel="noopener noreferrer">
+                            <div class="product-card__media">
+                                <img src="assets/TRIFFEN_camisa_marrom_frente.jpg" alt="" class="product-card__img product-card__img--flat" width="800"
+                                    height="1000">
+                                <img src="assets/JHI_modelo_costas_marrom.JPG" alt="Modelo vestindo camiseta oversized marrom Triffen"
+                                    class="product-card__img product-card__img--model" width="800" height="1000">
+                            </div>
+                            <div class="product-card__info">
+                                <h3 class="product-card__name">Triffen T-Shirt Oversized Marrom</h3>
+                                <p class="product-card__price">R$&nbsp;149,90</p>
+                                <span class="product-card__cta">Garantir no WhatsApp</span>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="product-card">
+                        <a class="product-card__link" href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20garantir%20a%20Triffen%20T-Shirt%20Oversized%20Roxa."
+                            target="_blank" rel="noopener noreferrer">
+                            <div class="product-card__media">
+                                <img src="assets/TRIFFEN_camisa_roxa_frente.jpg" alt="" class="product-card__img product-card__img--flat" width="800"
+                                    height="1000">
+                                <img src="assets/TRIFFEN_camisa_roxa_modeloM_frente.JPG" alt="Modelo vestindo camiseta oversized roxa Triffen"
+                                    class="product-card__img product-card__img--model" width="800" height="1000">
+                            </div>
+                            <div class="product-card__info">
+                                <h3 class="product-card__name">Triffen T-Shirt Oversized Roxa</h3>
+                                <p class="product-card__price">R$&nbsp;149,90</p>
+                                <span class="product-card__cta">Garantir no WhatsApp</span>
+                            </div>
+                        </a>
+                    </article>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="about-section" aria-labelledby="about-heading">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 id="about-heading">OS TRÊS CAMINHOS.</h2>
+                    <p>Triffen nasce da ideia de que todos têm sonhos, decisões e histórias próprias. Representamos as
+                        escolhas da vida e as diferentes direções que você pode seguir.</p>
+                    <p>Do bar à praia, do shopping à academia. Quem veste Triffen carrega presença e a coragem de fazer
+                        acontecer.</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-badge" role="img" aria-label="Logo tipográfico Triffen">
+                        <div class="about-badge__disk about-badge__disk--on-dark">
+                            <img src="assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png" alt="" class="about-badge__wordmark" width="320" height="120">
+                        </div>
+                        <div class="about-badge__disk about-badge__disk--on-light">
+                            <img src="assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-PRETA.png" alt="" class="about-badge__wordmark" width="320" height="120">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <img src="assets/FRENTE-PNG.png" alt="Triffen Shi" class="footer-shi">
+        <div class="footer-brand">
+            <img src="assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png" alt="Triffen" class="footer-logo footer-logo--on-dark" width="48" height="48">
+            <img src="assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-PRETA.png" alt="" class="footer-logo footer-logo--on-light" width="48" height="48"
+                aria-hidden="true">
+        </div>
         <p>© 2026 Triffen Oficial. Todos os direitos reservados.</p>
     </footer>
 

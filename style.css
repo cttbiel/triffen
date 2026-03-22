@@ -3,6 +3,9 @@
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Inter', sans-serif;
     --transition-speed: 0.3s;
+    --muted-border: rgba(128, 128, 128, 0.2);
+    --layout-gutter: clamp(1rem, 4vw, 3rem);
+    --content-max: 1680px;
 }
 
 /* Tema Escuro (Padrão) */
@@ -37,155 +40,398 @@ body {
     overflow-x: hidden;
 }
 
+/* Logos por tema (sem filter: invert) */
+.nav-wordmark--on-light,
+.theme-icon--on-light,
+.footer-logo--on-light {
+    display: none;
+}
+
+body.light-mode .nav-wordmark--on-dark,
+body.light-mode .theme-icon--on-dark,
+body.light-mode .footer-logo--on-dark {
+    display: none;
+}
+
+body.light-mode .nav-wordmark--on-light,
+body.light-mode .theme-icon--on-light,
+body.light-mode .footer-logo--on-light {
+    display: block;
+}
+
+/* Badge “sobre”: disco por tema */
+.about-badge__disk--on-light {
+    display: none;
+}
+
+body.light-mode .about-badge__disk--on-dark {
+    display: none;
+}
+
+body.light-mode .about-badge__disk--on-light {
+    display: flex;
+}
+
 /* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
+    padding: 1.25rem var(--layout-gutter);
     position: fixed;
     width: 100%;
     top: 0;
-    background: transparent;
-    backdrop-filter: blur(10px); /* Efeito vidro na rolagem */
+    background: color-mix(in srgb, var(--bg-color) 75%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 100;
 }
 
-.nav-logo {
-    height: 40px;
-    /* Truque: inverte as cores da imagem preta se o tema for claro */
-    transition: filter var(--transition-speed);
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 0;
 }
 
-body.light-mode .nav-logo {
-    filter: invert(1);
+.nav-wordmark {
+    height: clamp(28px, 5vw, 40px);
+    width: auto;
+    transition: opacity var(--transition-speed);
 }
 
 .theme-btn {
     background: none;
     border: none;
     cursor: pointer;
+    padding: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.shi-icon {
+.theme-icon {
     height: 30px;
-    transition: transform 0.3s ease, filter var(--transition-speed);
+    width: auto;
+    max-height: 32px;
+    transition: transform 0.3s ease;
 }
 
-body.light-mode .shi-icon {
-    filter: invert(1);
-}
-
-.shi-icon:hover {
+.theme-btn:hover .theme-icon,
+.theme-btn:focus-visible .theme-icon {
     transform: rotate(15deg);
 }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.theme-btn:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 4px;
+}
+
+/* Capa (estilo banner full-width) */
+.cover {
+    padding-top: 4.5rem;
+}
+
+.cover__frame {
+    width: 100%;
+    min-height: min(52vh, 720px);
+    max-height: 70vh;
+    overflow: hidden;
+    background: var(--bg-color);
+}
+
+.cover__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: min(52vh, 720px);
+    max-height: 70vh;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Manifesto (abaixo da capa, acima do catálogo) */
+.manifesto {
+    padding: clamp(2.5rem, 6vw, 4rem) var(--layout-gutter);
+    background-color: var(--bg-color);
+}
+
+.manifesto__inner {
+    max-width: var(--content-max);
+    width: 100%;
+    margin: 0 auto;
     text-align: center;
-    padding: 0 5%;
 }
 
-.hero h1 {
+.manifesto h1 {
     font-family: var(--font-heading);
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(2.25rem, 7vw, 5rem);
     text-transform: uppercase;
-    line-height: 1.1;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
     margin-bottom: 1rem;
-    letter-spacing: -2px;
+    color: var(--text-color);
 }
 
-.hero p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 2.5rem;
-    opacity: 0.8;
-}
-
-.cta-button {
+.manifesto__line {
     display: inline-block;
-    padding: 1rem 3rem;
+}
+
+.manifesto__lede {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    max-width: min(42rem, 100%);
+    margin: 0 auto;
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+/* Catálogo */
+.catalog {
+    padding-block: 0 clamp(4rem, 8vw, 6rem);
+    padding-inline: var(--layout-gutter);
+    background-color: var(--bg-color);
+}
+
+.catalog__inner {
+    max-width: var(--content-max);
+    width: 100%;
+    margin: 0 auto;
+}
+
+.catalog__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    text-align: left;
+    color: var(--text-color);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.product-card {
+    background: transparent;
+}
+
+.product-card__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+    border: none;
+}
+
+.product-card__link:focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 4px;
+}
+
+.product-card__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--text-color) 6%, transparent);
+}
+
+.product-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.product-card__img--flat {
+    z-index: 1;
+    opacity: 1;
+}
+
+.product-card__img--model {
+    z-index: 2;
+    opacity: 0;
+}
+
+.product-card__link:hover .product-card__img--model,
+.product-card__link:focus-visible .product-card__img--model {
+    opacity: 1;
+}
+
+.product-card__link:hover .product-card__img--flat,
+.product-card__link:focus-visible .product-card__img--flat {
+    opacity: 0;
+}
+
+.product-card__info {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.product-card__name {
+    font-family: var(--font-heading);
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+}
+
+.product-card__price {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.product-card__cta {
+    display: inline-block;
+    margin-top: 0.5rem;
+    align-self: flex-start;
+    padding: 0.65rem 1.25rem;
     background-color: var(--btn-bg);
     color: var(--btn-text);
-    text-decoration: none;
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     font-weight: 700;
-    transition: transform 0.2s ease;
+    letter-spacing: 0.04em;
+    transition: transform 0.2s ease, opacity var(--transition-speed);
 }
 
-.cta-button:hover {
-    transform: translateY(-5px);
+.product-card__link:hover .product-card__cta,
+.product-card__link:focus-visible .product-card__cta {
+    transform: translateY(-2px);
 }
 
 /* Sobre a Marca */
 .about-section {
-    padding: 5rem 5%;
-    min-height: 80vh;
+    padding: clamp(3rem, 8vw, 5rem) var(--layout-gutter);
+    min-height: 50vh;
     display: flex;
     align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
 }
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    max-width: 1200px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    max-width: var(--content-max);
+    width: 100%;
     margin: 0 auto;
     align-items: center;
 }
 
 .about-text h2 {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 1.5rem;
 }
 
 .about-text p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
     margin-bottom: 1rem;
     line-height: 1.6;
     opacity: 0.8;
+    max-width: 52ch;
 }
 
-.concept-art {
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Disco perfeito + tipografia centralizada (evita “oval” de foto retangular) */
+.about-badge {
+    position: relative;
+    width: min(100%, clamp(220px, 28vmin, 400px));
+    aspect-ratio: 1;
+    margin-inline: auto;
+}
+
+.about-badge__disk {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: clamp(12%, 4vmin, 18%);
+    box-sizing: border-box;
+}
+
+.about-badge__disk--on-dark {
+    background-color: #000000;
+}
+
+.about-badge__disk--on-light {
+    background-color: #ffffff;
+    box-shadow: inset 0 0 0 1px var(--muted-border);
+}
+
+.about-badge__wordmark {
     width: 100%;
-    max-width: 500px;
-    border-radius: 50%; /* Deixa a arte redonda */
-    transition: filter var(--transition-speed);
-}
-
-body.light-mode .concept-art {
-    filter: invert(1);
+    max-width: 100%;
+    height: auto;
+    max-height: 42%;
+    object-fit: contain;
+    display: block;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 3rem 5%;
-    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    padding: 3rem var(--layout-gutter);
+    border-top: 1px solid var(--muted-border);
+    background-color: var(--bg-color);
 }
 
-.footer-shi {
-    height: 40px;
+.footer-brand {
+    display: flex;
+    justify-content: center;
     margin-bottom: 1rem;
-    opacity: 0.5;
-    transition: filter var(--transition-speed);
+    min-height: 48px;
+    align-items: center;
 }
 
-body.light-mode .footer-shi {
-    filter: invert(1);
+.footer-logo {
+    height: 40px;
+    width: auto;
+    opacity: 0.85;
 }
 
-/* Responsividade Básica */
+/* Smartphone: uma coluna; desktop/tablet horizontal: três produtos lado a lado */
+@media (max-width: 767px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .about-grid {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .about-text p {
+        margin-inline: auto;
+    }
+
+    .cover__frame {
+        min-height: 40vh;
+        max-height: 55vh;
+    }
+
+    .cover__img {
+        min-height: 40vh;
+        max-height: 55vh;
     }
 }
