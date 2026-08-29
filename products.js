@@ -3,7 +3,7 @@
  * Estrutura modular de dados para alimentar a loja e páginas de produtos dinamicamente.
  */
 
-const TRIFFEN_WHATSAPP_PHONE = "5511999999999"; // Substitua pelo número oficial do WhatsApp da Triffen
+const TRIFFEN_WHATSAPP_PHONE = "5527996500097";
 
 const TRIFFEN_PRODUCTS = [
   {
