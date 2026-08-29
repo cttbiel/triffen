@@ -7,24 +7,45 @@
     <title>TRIFFEN | Put Your Mind, Make It Happen</title>
     <link rel="shortcut icon" href="assets/logo_jhi_preta.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 </head>
 
-<body class="dark-mode">
+<body class="dark-mode page-home">
+    <!-- Barra Superior de Avisos -->
+    <div class="announcement-bar" role="region" aria-label="Avisos">
+        <p>🚚 <strong>FRETE GRÁTIS</strong> EM COMPRAS ACIMA DE R$ 299 | DROP I LIBERADO</p>
+    </div>
+
+    <!-- Navbar Principal -->
     <nav class="navbar" aria-label="Principal">
-        <a href="#" class="logo-container">
+        <a href="index.html" class="logo-container" aria-label="Triffen Página Inicial">
             <img src="assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png" alt="Triffen" class="nav-wordmark nav-wordmark--on-dark"
                 width="160" height="40">
             <img src="assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-PRETA.png" alt="" class="nav-wordmark nav-wordmark--on-light"
                 width="160" height="40" aria-hidden="true">
         </a>
+
+        <div class="nav-links">
+            <a href="#drop-1" class="nav-link">COLEÇÃO</a>
+            <a href="#about" class="nav-link">MANIFESTO</a>
+            <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Triffen." target="_blank" rel="noopener noreferrer" class="nav-link">ATENDIMENTO</a>
+        </div>
+
         <div class="nav-actions">
             <button type="button" id="theme-toggle" class="theme-btn" aria-label="Alternar tema claro ou escuro">
                 <img src="assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png" alt="" class="theme-icon theme-icon--on-dark" width="32" height="32">
                 <img src="assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-PRETA.png" alt="" class="theme-icon theme-icon--on-light" width="32" height="32"
                     aria-hidden="true">
             </button>
+            <a href="#drop-1" class="nav-cart-btn" aria-label="Ver produtos do catálogo">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span class="nav-cart-count">3</span>
+            </a>
         </div>
     </nav>
 
@@ -45,56 +66,77 @@
 
         <section class="catalog" id="drop-1" aria-labelledby="catalog-heading">
             <div class="catalog__inner">
-                <h2 id="catalog-heading" class="catalog__title">DROP I / ESSENTIALS</h2>
+                <div class="catalog__header">
+                    <div>
+                        <span class="catalog__subtitle">COLEÇÃO EXCLUSIVA</span>
+                        <h2 id="catalog-heading" class="catalog__title">DROP I / ESSENTIALS</h2>
+                    </div>
+                    <span class="catalog__count">3 PRODUTOS DISPONÍVEIS</span>
+                </div>
 
                 <div class="product-grid">
+                    <!-- Produto 1: Bege -->
                     <article class="product-card">
-                        <a class="product-card__link" href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20garantir%20a%20Triffen%20T-Shirt%20Oversized%20Bege."
-                            target="_blank" rel="noopener noreferrer">
+                        <a class="product-card__link" href="produto.html?id=bege" aria-label="Ver detalhes da Triffen T-Shirt Oversized Bege">
                             <div class="product-card__media">
-                                <img src="assets/TRIFFEN_camisa_bege_frente.jpg" alt="" class="product-card__img product-card__img--flat" width="800"
-                                    height="1000">
+                                <span class="product-card__tag">MAIS VENDIDO</span>
+                                <img src="assets/TRIFFEN_camisa_bege_frente.jpg" alt="Camiseta Triffen Oversized Bege frontal" class="product-card__img product-card__img--flat" width="800"
+                                    height="1000" loading="lazy">
                                 <img src="assets/TRIFFEN_camisa_bege_modelo_f.jpg" alt="Modelo vestindo camiseta oversized bege Triffen"
-                                    class="product-card__img product-card__img--model" width="800" height="1000">
+                                    class="product-card__img product-card__img--model" width="800" height="1000" loading="lazy">
                             </div>
                             <div class="product-card__info">
+                                <span class="product-card__category">DROP I / ESSENTIALS</span>
                                 <h3 class="product-card__name">Triffen T-Shirt Oversized Bege</h3>
-                                <p class="product-card__price">R$&nbsp;149,90</p>
-                                <span class="product-card__cta">Garantir no WhatsApp</span>
+                                <div class="product-card__pricing">
+                                    <p class="product-card__price">R$&nbsp;149,90</p>
+                                    <span class="product-card__installments">3x de R$&nbsp;49,97 sem juros</span>
+                                </div>
+                                <span class="product-card__cta">VER PEÇA &amp; DETALHES &rarr;</span>
                             </div>
                         </a>
                     </article>
 
+                    <!-- Produto 2: Marrom -->
                     <article class="product-card">
-                        <a class="product-card__link" href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20garantir%20a%20Triffen%20T-Shirt%20Oversized%20Marrom."
-                            target="_blank" rel="noopener noreferrer">
+                        <a class="product-card__link" href="produto.html?id=marrom" aria-label="Ver detalhes da Triffen T-Shirt Oversized Marrom">
                             <div class="product-card__media">
-                                <img src="assets/TRIFFEN_camisa_marrom_frente.jpg" alt="" class="product-card__img product-card__img--flat" width="800"
-                                    height="1000">
-                                <img src="assets/JHI_modelo_costas_marrom.JPG" alt="Modelo vestindo camiseta oversized marrom Triffen"
-                                    class="product-card__img product-card__img--model" width="800" height="1000">
+                                <span class="product-card__tag">DESTAQUE</span>
+                                <img src="assets/TRIFFEN_camisa_marrom_frente.jpg" alt="Camiseta Triffen Oversized Marrom frontal" class="product-card__img product-card__img--flat" width="800"
+                                    height="1000" loading="lazy">
+                                <img src="assets/JHI_modelo_costas_marrom.JPG" alt="Modelo vestindo camiseta oversized marrom Triffen costas"
+                                    class="product-card__img product-card__img--model" width="800" height="1000" loading="lazy">
                             </div>
                             <div class="product-card__info">
+                                <span class="product-card__category">DROP I / ESSENTIALS</span>
                                 <h3 class="product-card__name">Triffen T-Shirt Oversized Marrom</h3>
-                                <p class="product-card__price">R$&nbsp;149,90</p>
-                                <span class="product-card__cta">Garantir no WhatsApp</span>
+                                <div class="product-card__pricing">
+                                    <p class="product-card__price">R$&nbsp;149,90</p>
+                                    <span class="product-card__installments">3x de R$&nbsp;49,97 sem juros</span>
+                                </div>
+                                <span class="product-card__cta">VER PEÇA &amp; DETALHES &rarr;</span>
                             </div>
                         </a>
                     </article>
 
+                    <!-- Produto 3: Roxa -->
                     <article class="product-card">
-                        <a class="product-card__link" href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Quero%20garantir%20a%20Triffen%20T-Shirt%20Oversized%20Roxa."
-                            target="_blank" rel="noopener noreferrer">
+                        <a class="product-card__link" href="produto.html?id=roxa" aria-label="Ver detalhes da Triffen T-Shirt Oversized Roxa">
                             <div class="product-card__media">
-                                <img src="assets/TRIFFEN_camisa_roxa_frente.jpg" alt="" class="product-card__img product-card__img--flat" width="800"
-                                    height="1000">
+                                <span class="product-card__tag">NOVIDADE</span>
+                                <img src="assets/TRIFFEN_camisa_roxa_frente.jpg" alt="Camiseta Triffen Oversized Roxa frontal" class="product-card__img product-card__img--flat" width="800"
+                                    height="1000" loading="lazy">
                                 <img src="assets/TRIFFEN_camisa_roxa_modeloM_frente.JPG" alt="Modelo vestindo camiseta oversized roxa Triffen"
-                                    class="product-card__img product-card__img--model" width="800" height="1000">
+                                    class="product-card__img product-card__img--model" width="800" height="1000" loading="lazy">
                             </div>
                             <div class="product-card__info">
+                                <span class="product-card__category">DROP I / ESSENTIALS</span>
                                 <h3 class="product-card__name">Triffen T-Shirt Oversized Roxa</h3>
-                                <p class="product-card__price">R$&nbsp;149,90</p>
-                                <span class="product-card__cta">Garantir no WhatsApp</span>
+                                <div class="product-card__pricing">
+                                    <p class="product-card__price">R$&nbsp;149,90</p>
+                                    <span class="product-card__installments">3x de R$&nbsp;49,97 sem juros</span>
+                                </div>
+                                <span class="product-card__cta">VER PEÇA &amp; DETALHES &rarr;</span>
                             </div>
                         </a>
                     </article>
@@ -102,7 +144,7 @@
             </div>
         </section>
 
-        <section class="about-section" aria-labelledby="about-heading">
+        <section class="about-section" id="about" aria-labelledby="about-heading">
             <div class="about-grid">
                 <div class="about-text">
                     <h2 id="about-heading">OS TRÊS CAMINHOS.</h2>
@@ -125,15 +167,26 @@
         </section>
     </main>
 
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20estou%20no%20site%20da%20Triffen%20e%20gostaria%20de%20atendimento." target="_blank" rel="noopener noreferrer" class="whatsapp-floating-btn" aria-label="Falar com a Triffen no WhatsApp">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="#FFFFFF">
+            <path d="M17.472 14.382c-.301-.15-1.781-.879-2.057-.98-.276-.1-.477-.15-.678.15-.2.301-.778.98-.954 1.18-.175.2-.351.226-.652.075s-1.272-.469-2.423-1.496c-.896-.799-1.501-1.786-1.677-2.087-.175-.301-.019-.464.132-.614.136-.135.301-.351.452-.527.15-.175.2-.301.301-.501.101-.2.05-.376-.025-.527-.075-.15-.678-1.635-.929-2.241-.244-.59-.492-.51-.678-.52-.175-.008-.376-.01-.577-.01-.201 0-.527.075-.803.376s-1.054 1.03-1.054 2.51 1.079 2.91 1.23 3.111c.15.201 2.123 3.242 5.143 4.547.719.311 1.281.497 1.719.636.722.23 1.378.197 1.898.12.579-.087 1.781-.728 2.032-1.431.251-.703.251-1.305.175-1.431-.075-.126-.276-.201-.577-.351z"/>
+            <path d="M12.004 0C5.373 0 0 5.373 0 12c0 2.115.549 4.16 1.594 5.972L.051 23.473a.75.75 0 0 0 .937.937l5.655-1.482A11.936 11.936 0 0 0 12.004 24C18.635 24 24 18.627 24 12S18.635 0 12.004 0zm0 22a9.932 9.932 0 0 1-5.076-1.39.75.75 0 0 0-.555-.078l-4.148 1.087 1.139-3.97a.75.75 0 0 0-.083-.593A9.946 9.946 0 0 1 2 12c0-5.514 4.486-10 10.004-10 5.514 0 10 4.486 10 10s-4.486 10-9.996 10z"/>
+        </svg>
+        <span class="whatsapp-tooltip">Dúvidas? Fale conosco!</span>
+    </a>
+
+    <!-- Footer -->
     <footer>
         <div class="footer-brand">
             <img src="assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png" alt="Triffen" class="footer-logo footer-logo--on-dark" width="48" height="48">
             <img src="assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-PRETA.png" alt="" class="footer-logo footer-logo--on-light" width="48" height="48"
                 aria-hidden="true">
         </div>
-        <p>© 2026 Triffen Oficial. Todos os direitos reservados.</p>
+        <p>© 2026 Triffen Oficial. Todos os direitos reservados. Put Your Mind, Make It Happen.</p>
     </footer>
 
+    <script src="products.js"></script>
     <script src="script.js"></script>
 </body>
 
