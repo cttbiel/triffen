@@ -20,8 +20,13 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
 }) => {
   return (
     <div
-      className={`w-full overflow-hidden py-3 border-y border-[#262626] select-none ${
-        inverted ? "bg-white text-black" : "bg-black text-[#f5f5f5]"
+      style={{
+        borderColor: "var(--border-main)",
+      }}
+      className={`w-full overflow-hidden py-3 border-y select-none transition-colors duration-200 ${
+        inverted
+          ? "bg-[#111111] text-[#f5f5f5] dark:bg-white dark:text-black"
+          : "bg-[var(--bg-card)] text-[var(--text-heading)]"
       }`}
       aria-hidden="true"
     >

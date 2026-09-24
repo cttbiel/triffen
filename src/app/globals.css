@@ -4,38 +4,59 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   DESIGN SYSTEM: TEMAS DARK & LIGHT (REPRESENT CLO & AIMÉ LEON DORE)
+   ========================================================================== */
 :root {
-  --bg-primary: #0b0b0b;
-  --bg-secondary: #141414;
-  --bg-surface: #1a1a1a;
-  --border-color: #272727;
-  --text-primary: #f5f5f5;
-  --text-secondary: #999999;
-  --accent-gold: #c2a677;
-  --accent-green: #00c9a7;
+  --bg-page: #090909;
+  --bg-surface: #121212;
+  --bg-card: #131313;
+  --bg-card-hover: #1c1c1c;
+  --bg-pill: #181818;
+  --bg-input: #151515;
+  --border-main: #242424;
+  --border-subtle: #1a1a1a;
+  --text-heading: #ffffff;
+  --text-body: #cccccc;
+  --text-muted: #888888;
+  --accent-sand: #d5c5b2;
+  --nav-bg: rgba(9, 9, 9, 0.92);
+  --footer-bg: #070707;
+  --announcement-bg: #000000;
+  --announcement-text: #d5c5b2;
 }
 
-.light-mode {
-  --bg-primary: #fcfcfc;
-  --bg-secondary: #f3f3f3;
+html.light-mode {
+  --bg-page: #f8f7f4;
   --bg-surface: #ffffff;
-  --border-color: #e5e5e5;
-  --text-primary: #111111;
-  --text-secondary: #666666;
-  --accent-gold: #967d53;
-  --accent-green: #008770;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f3efe8;
+  --bg-pill: #ece7de;
+  --bg-input: #ffffff;
+  --border-main: #e2ddd5;
+  --border-subtle: #eae5dc;
+  --text-heading: #0f0f0f;
+  --text-body: #2c2c2c;
+  --text-muted: #666666;
+  --accent-sand: #806242;
+  --nav-bg: rgba(248, 247, 244, 0.94);
+  --footer-bg: #f0ece5;
+  --announcement-bg: #111111;
+  --announcement-text: #f0ece5;
 }
 
 html {
   scroll-behavior: smooth;
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--bg-page);
+  color: var(--text-body);
 }
 
 body {
   overflow-x: hidden;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  background-color: var(--bg-page);
+  color: var(--text-body);
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
   min-height: 100vh;
 }
 
@@ -52,22 +73,41 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--bg-page);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
+  background: var(--border-main);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
+  background: var(--text-muted);
 }
 
-/* Animações e micro-interações */
-.transition-smooth {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+/* Utilitários dinâmicos de tema */
+.theme-bg-page {
+  background-color: var(--bg-page);
 }
-
-/* Utilitário para imagens responsivas */
-.aspect-product {
-  aspect-ratio: 4 / 5;
+.theme-bg-surface {
+  background-color: var(--bg-surface);
+}
+.theme-bg-card {
+  background-color: var(--bg-card);
+}
+.theme-bg-pill {
+  background-color: var(--bg-pill);
+}
+.theme-border {
+  border-color: var(--border-main);
+}
+.theme-border-subtle {
+  border-color: var(--border-subtle);
+}
+.theme-text-heading {
+  color: var(--text-heading);
+}
+.theme-text-body {
+  color: var(--text-body);
+}
+.theme-text-muted {
+  color: var(--text-muted);
 }

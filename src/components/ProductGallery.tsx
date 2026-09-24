@@ -42,7 +42,11 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
         onMouseLeave={() => setIsZooming(false)}
         onMouseMove={handleMouseMove}
         onClick={() => setIsLightboxOpen(true)}
-        className="relative w-full aspect-[4/5] bg-[#121212] border border-[#222222] rounded overflow-hidden cursor-crosshair select-none group"
+        style={{
+          backgroundColor: "var(--bg-card)",
+          borderColor: "var(--border-main)",
+        }}
+        className="relative w-full aspect-[4/5] border rounded overflow-hidden cursor-crosshair select-none group shadow-sm transition-colors duration-200"
       >
         <Image
           src={activeImage.src}
@@ -67,7 +71,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
         )}
 
         {/* Dica de Zoom / Tela Cheia */}
-        <div className="absolute bottom-3 right-3 z-30 flex items-center space-x-1.5 bg-black/75 backdrop-blur-md px-2.5 py-1.5 rounded text-[11px] text-[#ccc] font-heading tracking-wider border border-white/10 group-hover:text-white transition-colors duration-200">
+        <div className="absolute bottom-3 right-3 z-30 flex items-center space-x-1.5 bg-black/75 dark:bg-black/75 backdrop-blur-md px-2.5 py-1.5 rounded text-[11px] text-white font-heading tracking-wider border border-white/10 group-hover:scale-105 transition-all duration-200 shadow-md">
           <ZoomIn size={13} />
           <span>CLIQUE PARA AMPLIAR</span>
         </div>
@@ -82,10 +86,12 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
               type="button"
               onClick={() => setSelectedIndex(idx)}
               onMouseEnter={() => setSelectedIndex(idx)}
+              style={{
+                borderColor: selectedIndex === idx ? "var(--text-heading)" : "var(--border-main)",
+                backgroundColor: "var(--bg-card)",
+              }}
               className={`relative w-20 h-24 rounded overflow-hidden flex-shrink-0 border-2 transition-all duration-200 ${
-                selectedIndex === idx
-                  ? "border-[#d5c5b2] scale-100 opacity-100"
-                  : "border-[#262626] opacity-60 hover:opacity-100"
+                selectedIndex === idx ? "opacity-100 scale-100" : "opacity-60 hover:opacity-100"
               }`}
             >
               <Image
@@ -105,7 +111,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md"
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md animate-in fade-in duration-200"
           onClick={() => setIsLightboxOpen(false)}
         >
           <button

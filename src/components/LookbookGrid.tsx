@@ -5,19 +5,35 @@ import { ArrowRight } from "lucide-react";
 
 export const LookbookGrid: React.FC = () => {
   return (
-    <section id="lookbook" className="py-20 lg:py-28 bg-[#0b0b0b] border-t border-[#1e1e1e]">
+    <section
+      id="lookbook"
+      style={{
+        backgroundColor: "var(--bg-page)",
+        borderColor: "var(--border-main)",
+      }}
+      className="py-20 lg:py-28 border-t transition-colors duration-200"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho da Campanha */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-[#222222] pb-8">
+        <div
+          style={{ borderColor: "var(--border-main)" }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b pb-8"
+        >
           <div>
-            <span className="text-xs font-heading tracking-widest text-[#d5c5b2] uppercase block mb-2">
+            <span className="text-xs font-heading tracking-widest text-[#d5c5b2] dark:text-[#d5c5b2] uppercase block mb-2 font-semibold">
               CAMPANHA EDITORIAL / DROP I
             </span>
-            <h2 className="text-3xl sm:text-5xl font-heading font-bold text-white tracking-tight">
+            <h2
+              style={{ color: "var(--text-heading)" }}
+              className="text-3xl sm:text-5xl font-heading font-bold tracking-tight"
+            >
               OS TRÊS CAMINHOS.
             </h2>
           </div>
-          <p className="mt-4 md:mt-0 text-sm text-[#888888] max-w-md font-sans font-light leading-relaxed">
+          <p
+            style={{ color: "var(--text-muted)" }}
+            className="mt-4 md:mt-0 text-sm max-w-md font-sans font-light leading-relaxed"
+          >
             A Triffen nasce na encruzilhada de escolhas, coragem e identidade. Do bar à praia, do asfalto à natureza. Cada peça foi esculpida para carregar presença.
           </p>
         </div>
@@ -25,7 +41,7 @@ export const LookbookGrid: React.FC = () => {
         {/* Grade Asimétrica Curada (Estilo Aimé Leon Dore & Represent) */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Foto Principal de Destaque: Praia / Cerca */}
-          <div className="md:col-span-7 relative group overflow-hidden rounded bg-[#141414] aspect-[4/5] sm:aspect-[16/11]">
+          <div className="md:col-span-7 relative group overflow-hidden rounded bg-[#141414] aspect-[4/5] sm:aspect-[16/11] border border-black/10 shadow-sm">
             <Image
               src="/assets/lookbook_fence.jpg"
               alt="Modelos vestindo Triffen Drop I diante da orla"
@@ -33,7 +49,7 @@ export const LookbookGrid: React.FC = () => {
               sizes="(max-width: 768px) 100vw, 60vw"
               className="object-cover object-center brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-85 group-hover:opacity-75 transition-opacity duration-300"></div>
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-white">
               <div>
                 <span className="text-[10px] font-heading tracking-widest text-[#d5c5b2] uppercase block">
@@ -48,7 +64,7 @@ export const LookbookGrid: React.FC = () => {
               </div>
               <Link
                 href="/produto/bege"
-                className="inline-flex items-center space-x-1.5 text-xs font-heading tracking-wider py-2 px-3.5 bg-white/10 hover:bg-white text-white hover:text-black rounded backdrop-blur-md transition-colors duration-200"
+                className="inline-flex items-center space-x-1.5 text-xs font-heading tracking-wider py-2 px-3.5 bg-white text-black hover:bg-[#d5c5b2] rounded font-semibold transition-colors duration-200 shadow-md"
               >
                 <span>VER PEÇA</span>
                 <ArrowRight size={13} />
@@ -59,7 +75,7 @@ export const LookbookGrid: React.FC = () => {
           {/* Coluna Direita com 2 Fotos Menores */}
           <div className="md:col-span-5 flex flex-col gap-6">
             {/* Foto 2: Trilha / Rochas */}
-            <div className="relative group overflow-hidden rounded bg-[#141414] aspect-[4/3] flex-1">
+            <div className="relative group overflow-hidden rounded bg-[#141414] aspect-[4/3] flex-1 border border-black/10 shadow-sm">
               <Image
                 src="/assets/lookbook_model_trail.jpg"
                 alt="Modelo Triffen com calça cargo e camiseta marrom na trilha"
@@ -67,7 +83,7 @@ export const LookbookGrid: React.FC = () => {
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover object-top brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-75"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-80"></div>
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white">
                 <div>
                   <span className="text-[9px] font-heading tracking-widest text-[#d5c5b2] uppercase block">
@@ -87,7 +103,7 @@ export const LookbookGrid: React.FC = () => {
             </div>
 
             {/* Foto 3: Street Sticker Culture */}
-            <div className="relative group overflow-hidden rounded bg-[#141414] aspect-[4/3] flex-1">
+            <div className="relative group overflow-hidden rounded bg-[#141414] aspect-[4/3] flex-1 border border-black/10 shadow-sm">
               <Image
                 src="/assets/lookbook_urban_sticker.jpg"
                 alt="Adesivo Triffen em pilar de concreto urbano"
@@ -95,7 +111,7 @@ export const LookbookGrid: React.FC = () => {
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover object-center brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-75"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-80"></div>
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-white">
                 <div>
                   <span className="text-[9px] font-heading tracking-widest text-[#d5c5b2] uppercase block">

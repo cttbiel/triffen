@@ -5,8 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { TRIFFEN_WHATSAPP_PHONE } from "@/data/products";
 import { ShieldCheck, Truck, RotateCcw, Lock, ArrowRight, Check } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 export const Footer: React.FC = () => {
+  const { isDark } = useTheme();
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
@@ -20,20 +22,39 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#070707] text-[#888888] border-t border-[#1e1e1e] pt-16 pb-12 select-none">
+    <footer
+      style={{
+        backgroundColor: "var(--footer-bg)",
+        borderColor: "var(--border-main)",
+        color: "var(--text-body)",
+      }}
+      className="border-t pt-16 pb-12 select-none transition-colors duration-200"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* =========================================================================
             1. LINHA SUPERIOR: NEWSLETTER VIP & COMUNIDADE DE DROPS
            ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-[#1c1c1c] items-center">
+        <div
+          style={{ borderColor: "var(--border-subtle)" }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b items-center"
+        >
           <div className="lg:col-span-6">
-            <span className="text-[10px] font-heading tracking-widest text-[#d5c5b2] uppercase block mb-1">
+            <span
+              style={{ color: "var(--accent-sand)" }}
+              className="text-[10px] font-heading tracking-widest uppercase block mb-1"
+            >
               ACESSO EXCLUSIVO • LISTA VIP
             </span>
-            <h3 className="text-xl sm:text-2xl font-heading font-bold text-white tracking-wide">
+            <h3
+              style={{ color: "var(--text-heading)" }}
+              className="text-xl sm:text-2xl font-heading font-bold tracking-wide"
+            >
               RECEBA OS PRÓXIMOS DROPS ANTES DE TODOS
             </h3>
-            <p className="text-xs text-[#999] font-sans font-light mt-1 max-w-md">
+            <p
+              style={{ color: "var(--text-muted)" }}
+              className="text-xs font-sans font-light mt-1 max-w-md"
+            >
               Edições numeradas e peças de tiragem limitada. Cadastre-se para ser notificado no lançamento oficial.
             </p>
           </div>
@@ -46,11 +67,20 @@ export const Footer: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="SEU MELHOR E-MAIL"
                 required
-                className="flex-1 bg-[#121212] border border-[#262626] focus:border-[#d5c5b2] rounded px-4 py-3 text-xs text-white placeholder-[#666] outline-none font-heading tracking-wider"
+                style={{
+                  backgroundColor: "var(--bg-input)",
+                  borderColor: "var(--border-main)",
+                  color: "var(--text-heading)",
+                }}
+                className="flex-1 rounded px-4 py-3 text-xs outline-none font-heading tracking-wider focus:ring-1 focus:ring-[var(--accent-sand)] transition-all"
               />
               <button
                 type="submit"
-                className="bg-white hover:bg-[#d5c5b2] text-black font-heading font-bold text-xs tracking-widest px-6 py-3 rounded transition-colors duration-200 flex items-center space-x-1.5 flex-shrink-0"
+                style={{
+                  backgroundColor: isDark ? "#ffffff" : "#0f0f0f",
+                  color: isDark ? "#000000" : "#ffffff",
+                }}
+                className="font-heading font-bold text-xs tracking-widest px-6 py-3 rounded transition-colors duration-200 flex items-center space-x-1.5 flex-shrink-0 hover:opacity-90"
               >
                 {subscribed ? (
                   <>
@@ -76,13 +106,20 @@ export const Footer: React.FC = () => {
         {/* =========================================================================
             2. GRID PRINCIPAL: MARCA, NAVEGAÇÃO, CONTATO & REDES SOCIAIS
            ========================================================================= */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 py-12 border-b border-[#1c1c1c]">
+        <div
+          style={{ borderColor: "var(--border-subtle)" }}
+          className="grid grid-cols-1 md:grid-cols-12 gap-10 py-12 border-b"
+        >
           {/* Coluna 1: Tipografia & Identidade */}
           <div className="md:col-span-5 space-y-4">
             <Link href="/" className="inline-block">
               <div className="relative w-44 h-10">
                 <Image
-                  src="/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png"
+                  src={
+                    isDark
+                      ? "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png"
+                      : "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-PRETA.png"
+                  }
                   alt="Triffen"
                   fill
                   sizes="180px"
@@ -91,11 +128,17 @@ export const Footer: React.FC = () => {
               </div>
             </Link>
 
-            <p className="text-xs sm:text-sm font-sans font-light leading-relaxed max-w-sm text-[#aaaaaa]">
+            <p
+              style={{ color: "var(--text-muted)" }}
+              className="text-xs sm:text-sm font-sans font-light leading-relaxed max-w-sm"
+            >
               Put Your Mind, Make It Happen. Streetwear brasileiro de alta gramatura e corte autoral boxy. Confeccionado para quem dita o próprio destino.
             </p>
 
-            <div className="pt-2 flex items-center space-x-3 text-[11px] font-heading tracking-widest text-[#d5c5b2]">
+            <div
+              style={{ color: "var(--accent-sand)" }}
+              className="pt-2 flex items-center space-x-3 text-[11px] font-heading tracking-widest"
+            >
               <span>DROP I / ESSENTIALS &amp; HEADWEAR</span>
               <span>•</span>
               <span>EST. 2026</span>
@@ -104,16 +147,26 @@ export const Footer: React.FC = () => {
 
           {/* Coluna 2: Navegação */}
           <div className="md:col-span-3">
-            <h4 className="text-xs font-heading tracking-widest text-white uppercase mb-4">
+            <h4
+              style={{ color: "var(--text-heading)" }}
+              className="text-xs font-heading tracking-widest uppercase mb-4"
+            >
               COLEÇÃO &amp; PEÇAS
             </h4>
             <ul className="space-y-2.5 text-xs font-sans">
               <li>
                 <Link
                   href="/produto/bone-5panel"
-                  className="text-white hover:text-[#d5c5b2] transition-colors duration-200 flex items-center space-x-1.5"
+                  style={{ color: "var(--text-body)" }}
+                  className="hover:!text-[var(--accent-sand)] transition-colors duration-200 flex items-center space-x-1.5"
                 >
-                  <span className="text-[9px] font-heading px-1.5 py-0.5 rounded bg-white/10 text-[#d5c5b2]">
+                  <span
+                    style={{
+                      backgroundColor: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.06)",
+                      color: "var(--accent-sand)",
+                    }}
+                    className="text-[9px] font-heading px-1.5 py-0.5 rounded"
+                  >
                     NOVO
                   </span>
                   <span>5-Panel Cap Stealth Black</span>
@@ -122,7 +175,8 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/produto/bege"
-                  className="hover:text-white transition-colors duration-200"
+                  style={{ color: "var(--text-muted)" }}
+                  className="hover:!text-[var(--text-heading)] transition-colors duration-200"
                 >
                   T-Shirt Oversized Bege
                 </Link>
@@ -130,7 +184,8 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/produto/marrom"
-                  className="hover:text-white transition-colors duration-200"
+                  style={{ color: "var(--text-muted)" }}
+                  className="hover:!text-[var(--text-heading)] transition-colors duration-200"
                 >
                   T-Shirt Oversized Marrom
                 </Link>
@@ -138,7 +193,8 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/produto/roxa"
-                  className="hover:text-white transition-colors duration-200"
+                  style={{ color: "var(--text-muted)" }}
+                  className="hover:!text-[var(--text-heading)] transition-colors duration-200"
                 >
                   T-Shirt Oversized Roxa
                 </Link>
@@ -146,7 +202,8 @@ export const Footer: React.FC = () => {
               <li className="pt-2">
                 <Link
                   href="/#lookbook"
-                  className="text-[#d5c5b2] hover:text-white transition-colors duration-200 font-heading tracking-wider"
+                  style={{ color: "var(--accent-sand)" }}
+                  className="hover:!text-[var(--text-heading)] transition-colors duration-200 font-heading tracking-wider"
                 >
                   EDITORIAL OS TRÊS CAMINHOS &rarr;
                 </Link>
@@ -156,7 +213,10 @@ export const Footer: React.FC = () => {
 
           {/* Coluna 3: Redes Sociais & Contato com Ícones Oficiais */}
           <div className="md:col-span-4 space-y-4">
-            <h4 className="text-xs font-heading tracking-widest text-white uppercase">
+            <h4
+              style={{ color: "var(--text-heading)" }}
+              className="text-xs font-heading tracking-widest uppercase"
+            >
               CONCIERGE &amp; REDES OFICIAIS
             </h4>
 
@@ -166,7 +226,11 @@ export const Footer: React.FC = () => {
                 href={`https://wa.me/${TRIFFEN_WHATSAPP_PHONE}?text=Ol%C3%A1%2C%20estou%20no%20site%20da%20Triffen%20e%20gostaria%20de%20atendimento.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between p-3 rounded bg-[#111111] border border-[#222222] hover:border-[#25D366] hover:bg-[#161616] transition-all duration-200"
+                style={{
+                  backgroundColor: "var(--bg-surface)",
+                  borderColor: "var(--border-main)",
+                }}
+                className="group flex items-center justify-between p-3 rounded border hover:border-[#25D366] transition-all duration-200"
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-9 h-9 rounded-full bg-[#25D366]/15 text-[#25D366] flex items-center justify-center flex-shrink-0 group-hover:bg-[#25D366] group-hover:text-black transition-colors duration-200">
@@ -176,15 +240,25 @@ export const Footer: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <span className="text-xs font-heading font-semibold text-white tracking-wider block">
+                    <span
+                      style={{ color: "var(--text-heading)" }}
+                      className="text-xs font-heading font-semibold tracking-wider block"
+                    >
                       WHATSAPP OFICIAL
                     </span>
-                    <span className="text-[11px] text-[#777] font-mono">
+                    <span
+                      style={{ color: "var(--text-muted)" }}
+                      className="text-[11px] font-mono"
+                    >
                       (27) 99650-0097
                     </span>
                   </div>
                 </div>
-                <ArrowRight size={14} className="text-[#666] group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
+                <ArrowRight
+                  size={14}
+                  style={{ color: "var(--text-muted)" }}
+                  className="group-hover:!text-[#25D366] group-hover:translate-x-1 transition-all duration-200"
+                />
               </a>
 
               {/* Instagram Button Pill */}
@@ -192,7 +266,11 @@ export const Footer: React.FC = () => {
                 href="https://www.instagram.com/triffen.oficial/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between p-3 rounded bg-[#111111] border border-[#222222] hover:border-[#E1306C] hover:bg-[#161616] transition-all duration-200"
+                style={{
+                  backgroundColor: "var(--bg-surface)",
+                  borderColor: "var(--border-main)",
+                }}
+                className="group flex items-center justify-between p-3 rounded border hover:border-[#E1306C] transition-all duration-200"
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-9 h-9 rounded-full bg-[#E1306C]/15 text-[#E1306C] flex items-center justify-center flex-shrink-0 group-hover:bg-[#E1306C] group-hover:text-white transition-colors duration-200">
@@ -201,15 +279,25 @@ export const Footer: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <span className="text-xs font-heading font-semibold text-white tracking-wider block">
+                    <span
+                      style={{ color: "var(--text-heading)" }}
+                      className="text-xs font-heading font-semibold tracking-wider block"
+                    >
                       INSTAGRAM
                     </span>
-                    <span className="text-[11px] text-[#777] font-mono">
+                    <span
+                      style={{ color: "var(--text-muted)" }}
+                      className="text-[11px] font-mono"
+                    >
                       @triffen.oficial
                     </span>
                   </div>
                 </div>
-                <ArrowRight size={14} className="text-[#666] group-hover:text-white group-hover:translate-x-1 transition-all duration-200" />
+                <ArrowRight
+                  size={14}
+                  style={{ color: "var(--text-muted)" }}
+                  className="group-hover:!text-[#E1306C] group-hover:translate-x-1 transition-all duration-200"
+                />
               </a>
             </div>
           </div>
@@ -218,39 +306,75 @@ export const Footer: React.FC = () => {
         {/* =========================================================================
             3. BARRA DE SELOS DE CONFIANÇA & MEIOS DE PAGAMENTO
            ========================================================================= */}
-        <div className="py-8 border-b border-[#1c1c1c] flex flex-wrap items-center justify-between gap-6 text-[11px] font-heading tracking-widest text-[#777] uppercase">
+        <div
+          style={{ borderColor: "var(--border-subtle)" }}
+          className="py-8 border-b flex flex-wrap items-center justify-between gap-6 text-[11px] font-heading tracking-widest uppercase"
+        >
           <div className="flex flex-wrap items-center gap-6">
-            <span className="flex items-center space-x-1.5 text-[#aaa]">
+            <span style={{ color: "var(--text-body)" }} className="flex items-center space-x-1.5">
               <Lock size={13} className="text-[#00c9a7]" />
               <span>SSL 256-BIT CRIPTOGRAFADO</span>
             </span>
-            <span className="flex items-center space-x-1.5 text-[#aaa]">
+            <span style={{ color: "var(--text-body)" }} className="flex items-center space-x-1.5">
               <ShieldCheck size={13} className="text-[#00c9a7]" />
               <span>CONFORME LGPD</span>
             </span>
-            <span className="flex items-center space-x-1.5 text-[#aaa]">
-              <Truck size={13} className="text-[#d5c5b2]" />
+            <span style={{ color: "var(--text-body)" }} className="flex items-center space-x-1.5">
+              <Truck size={13} style={{ color: "var(--accent-sand)" }} />
               <span>ENVIO EM 24H ÚTEIS</span>
             </span>
-            <span className="flex items-center space-x-1.5 text-[#aaa]">
-              <RotateCcw size={13} className="text-[#d5c5b2]" />
+            <span style={{ color: "var(--text-body)" }} className="flex items-center space-x-1.5">
+              <RotateCcw size={13} style={{ color: "var(--accent-sand)" }} />
               <span>1ª TROCA GRÁTIS</span>
             </span>
           </div>
 
-          <div className="flex items-center space-x-3 text-[10px] text-[#666] font-mono">
-            <span className="px-2 py-1 rounded bg-[#141414] border border-[#222]">PIX (5% OFF)</span>
-            <span className="px-2 py-1 rounded bg-[#141414] border border-[#222]">CARTÃO ATÉ 3X</span>
-            <span className="px-2 py-1 rounded bg-[#141414] border border-[#222]">MERCADO PAGO</span>
+          <div
+            style={{ color: "var(--text-muted)" }}
+            className="flex items-center space-x-3 text-[10px] font-mono"
+          >
+            <span
+              style={{
+                backgroundColor: "var(--bg-surface)",
+                borderColor: "var(--border-main)",
+              }}
+              className="px-2 py-1 rounded border"
+            >
+              PIX (5% OFF)
+            </span>
+            <span
+              style={{
+                backgroundColor: "var(--bg-surface)",
+                borderColor: "var(--border-main)",
+              }}
+              className="px-2 py-1 rounded border"
+            >
+              CARTÃO ATÉ 3X
+            </span>
+            <span
+              style={{
+                backgroundColor: "var(--bg-surface)",
+                borderColor: "var(--border-main)",
+              }}
+              className="px-2 py-1 rounded border"
+            >
+              MERCADO PAGO
+            </span>
           </div>
         </div>
 
         {/* =========================================================================
             4. LINHA INFERIOR: COPYRIGHT & MANIFESTO
            ========================================================================= */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#666] font-sans">
+        <div
+          style={{ color: "var(--text-muted)" }}
+          className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-sans"
+        >
           <p>© 2026 Triffen Oficial. Todos os direitos reservados.</p>
-          <p className="mt-2 sm:mt-0 font-heading tracking-wider text-[#999]">
+          <p
+            style={{ color: "var(--text-body)" }}
+            className="mt-2 sm:mt-0 font-heading tracking-wider"
+          >
             PUT YOUR MIND, MAKE IT HAPPEN.
           </p>
         </div>

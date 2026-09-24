@@ -20,18 +20,30 @@ export default function Home() {
       <MarqueeTicker />
 
       {/* 3. Catálogo Oficial (Drop I) */}
-      <section id="colecao" className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 border-b border-[#222222] pb-6">
+      <section
+        id="colecao"
+        className="py-20 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
+      >
+        <div
+          style={{ borderColor: "var(--border-main)" }}
+          className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 border-b pb-6"
+        >
           <div>
-            <span className="text-[11px] font-heading tracking-widest text-[#d5c5b2] uppercase block mb-1.5">
+            <span className="text-[11px] font-heading tracking-widest text-[#a88d6f] dark:text-[#d5c5b2] uppercase block mb-1.5 font-semibold">
               CATÁLOGO OFICIAL • DROP I
             </span>
-            <h2 className="text-3xl sm:text-5xl font-heading font-bold text-white tracking-tight">
+            <h2
+              style={{ color: "var(--text-heading)" }}
+              className="text-3xl sm:text-5xl font-heading font-bold tracking-tight"
+            >
               ESSENTIALS &amp; HEADWEAR
             </h2>
           </div>
-          <div className="mt-3 sm:mt-0 flex items-center space-x-2 text-xs font-heading tracking-wider text-[#888]">
-            <span>4 ITENS EM ESTOQUE LIMITADO</span>
+          <div
+            style={{ color: "var(--text-muted)" }}
+            className="mt-3 sm:mt-0 flex items-center space-x-2 text-xs font-heading tracking-wider"
+          >
+            <span>{products.length} ITENS EM ESTOQUE LIMITADO</span>
             <ArrowDown size={14} className="animate-bounce" />
           </div>
         </div>
@@ -61,18 +73,31 @@ export default function Home() {
       />
 
       {/* 6. Manifesto & Os Três Caminhos */}
-      <section id="manifesto" className="py-24 bg-[#0e0e0e] border-t border-[#1e1e1e]">
+      <section
+        id="manifesto"
+        style={{
+          backgroundColor: "var(--bg-surface)",
+          borderColor: "var(--border-main)",
+        }}
+        className="py-24 border-t transition-colors duration-200"
+      >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-heading tracking-widest text-[#d5c5b2] uppercase block mb-3">
+          <span className="text-xs font-heading tracking-widest text-[#a88d6f] dark:text-[#d5c5b2] uppercase block mb-3 font-semibold">
             O MANIFESTO
           </span>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold text-white tracking-tight leading-tight mb-8">
+          <h2
+            style={{ color: "var(--text-heading)" }}
+            className="text-3xl sm:text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-tight mb-8"
+          >
             NÃO É SÓ O QUE VOCÊ VESTE.
             <br />
             É O IMPACTO QUE VOCÊ DEIXA.
           </h2>
 
-          <div className="max-w-2xl mx-auto space-y-4 text-sm sm:text-base text-[#aaaaaa] font-sans font-light leading-relaxed">
+          <div
+            style={{ color: "var(--text-muted)" }}
+            className="max-w-2xl mx-auto space-y-4 text-sm sm:text-base font-sans font-light leading-relaxed"
+          >
             <p>
               A Triffen nasceu com a convicção de que quem sabe onde quer chegar não precisa pedir licença. Nossas peças traduzem a coragem das decisões, a postura de quem não se intimida e a determinação de transformar ideias em realidade.
             </p>
@@ -82,14 +107,26 @@ export default function Home() {
           </div>
 
           <div className="mt-12 flex items-center justify-center">
-            <div className="relative w-28 h-28 opacity-80 hover:opacity-100 transition-opacity duration-300">
-              <Image
-                src="/assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png"
-                alt="Emblema Triffen"
-                fill
-                sizes="112px"
-                className="object-contain"
-              />
+            {/* Emblema Triffen que responde ao tema */}
+            <div className="relative w-28 h-28 opacity-85 hover:opacity-100 transition-opacity duration-300">
+              <div className="dark:hidden relative w-full h-full">
+                <Image
+                  src="/assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-PRETA.png"
+                  alt="Emblema Triffen"
+                  fill
+                  sizes="112px"
+                  className="object-contain"
+                />
+              </div>
+              <div className="hidden dark:block relative w-full h-full">
+                <Image
+                  src="/assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png"
+                  alt="Emblema Triffen"
+                  fill
+                  sizes="112px"
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>

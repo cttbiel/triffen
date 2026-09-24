@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Product } from "@/types/product";
 import { MessageCircle } from "lucide-react";
 import { TRIFFEN_WHATSAPP_PHONE } from "@/data/products";
+import { useTheme } from "@/context/ThemeContext";
 
 interface StickyPurchaseBarProps {
   product: Product;
@@ -15,6 +16,7 @@ export const StickyPurchaseBar: React.FC<StickyPurchaseBarProps> = ({
   product,
   selectedSize,
 }) => {
+  const { isDark } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -37,12 +39,22 @@ export const StickyPurchaseBar: React.FC<StickyPurchaseBarProps> = ({
   return (
     <aside
       aria-label="Barra fixa de compra"
-      className="fixed bottom-0 left-0 right-0 z-40 bg-[#0d0d0d]/95 backdrop-blur-md border-t border-[#262626] py-3 px-4 shadow-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
+      style={{
+        backgroundColor: isDark ? "rgba(13, 13, 13, 0.96)" : "rgba(255, 255, 255, 0.96)",
+        borderColor: "var(--border-main)",
+      }}
+      className="fixed bottom-0 left-0 right-0 z-40 backdrop-blur-md border-t py-3 px-4 shadow-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-4"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         {/* Informações da Peça */}
         <div className="flex items-center space-x-3 min-w-0">
-          <div className="relative w-11 h-13 rounded overflow-hidden bg-[#181818] border border-[#2a2a2a] flex-shrink-0">
+          <div
+            style={{
+              backgroundColor: "var(--bg-pill)",
+              borderColor: "var(--border-main)",
+            }}
+            className="relative w-11 h-13 rounded overflow-hidden border flex-shrink-0"
+          >
             <Image
               src={product.images[0].src}
               alt=""
@@ -52,12 +64,17 @@ export const StickyPurchaseBar: React.FC<StickyPurchaseBarProps> = ({
             />
           </div>
           <div className="min-w-0">
-            <p className="text-xs font-heading font-semibold text-white truncate max-w-[200px] sm:max-w-sm">
+            <p
+              style={{ color: "var(--text-heading)" }}
+              className="text-xs font-heading font-semibold truncate max-w-[200px] sm:max-w-sm"
+            >
               {product.name}
             </p>
-            <p className="text-[11px] text-[#aaa] font-sans">
-              <strong className="text-white">{product.priceFormatted}</strong> • Tam:{" "}
-              <span className="text-[#d5c5b2] font-semibold">{selectedSize}</span>
+            <p style={{ color: "var(--text-muted)" }} className="text-[11px] font-sans">
+              <strong style={{ color: "var(--text-heading)" }}>{product.priceFormatted}</strong> • Tam:{" "}
+              <span style={{ color: "var(--accent-sand)" }} className="font-semibold">
+                {selectedSize}
+              </span>
             </p>
           </div>
         </div>

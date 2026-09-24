@@ -13,16 +13,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const hoverImg = product.images[1] || product.images[0];
 
   return (
-    <article className="group relative flex flex-col bg-[#121212] border border-[#222222] hover:border-[#444444] transition-all duration-300 rounded overflow-hidden">
+    <article
+      style={{
+        backgroundColor: "var(--bg-card)",
+        borderColor: "var(--border-main)",
+      }}
+      className="group relative flex flex-col border hover:border-[#999] dark:hover:border-[#555] transition-all duration-300 rounded overflow-hidden shadow-sm hover:shadow-xl"
+    >
       {/* Mídia do Produto com Troca no Hover */}
       <Link
         href={`/produto/${product.id}`}
-        className="relative block w-full aspect-[4/5] bg-[#0c0c0c] overflow-hidden"
+        style={{ backgroundColor: "var(--bg-pill)" }}
+        className="relative block w-full aspect-[4/5] overflow-hidden"
         aria-label={`Ver detalhes de ${product.name}`}
       >
         {/* Badge da Peça */}
         {product.badge && (
-          <span className="absolute top-3 left-3 z-20 bg-black/85 backdrop-blur-md text-white text-[10px] font-heading font-medium tracking-widest px-2.5 py-1 rounded border border-white/10 uppercase">
+          <span className="absolute top-3 left-3 z-20 bg-black/85 dark:bg-black/85 backdrop-blur-md text-white text-[10px] font-heading font-medium tracking-widest px-2.5 py-1 rounded border border-white/10 uppercase shadow-md">
             {product.badge}
           </span>
         )}
@@ -49,32 +56,45 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {/* Informações da Peça */}
       <div className="flex flex-col flex-1 p-5 justify-between">
         <div>
-          <div className="flex items-center justify-between text-[10px] font-heading tracking-widest text-[#888888] uppercase mb-1.5">
-            <span>{product.category}</span>
+          <div className="flex items-center justify-between text-[10px] font-heading tracking-widest uppercase mb-1.5 opacity-70">
+            <span style={{ color: "var(--text-muted)" }}>{product.category}</span>
             <span className="font-mono text-[9px] opacity-60">{product.sku}</span>
           </div>
 
-          <h3 className="text-base font-heading font-semibold text-white tracking-wide leading-snug group-hover:text-[#d5c5b2] transition-colors duration-200">
+          <h3
+            style={{ color: "var(--text-heading)" }}
+            className="text-base font-heading font-semibold tracking-wide leading-snug group-hover:text-[#a88d6f] transition-colors duration-200"
+          >
             <Link href={`/produto/${product.id}`}>{product.name}</Link>
           </h3>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-[#1e1e1e] flex items-end justify-between">
+        <div
+          style={{ borderColor: "var(--border-subtle)" }}
+          className="mt-4 pt-4 border-t flex items-end justify-between"
+        >
           <div>
-            <p className="text-lg font-heading font-bold text-white tracking-wide">
+            <p
+              style={{ color: "var(--text-heading)" }}
+              className="text-lg font-heading font-bold tracking-wide"
+            >
               {product.priceFormatted}
             </p>
-            <span className="text-[11px] text-[#888888] font-sans block">
+            <span
+              style={{ color: "var(--text-muted)" }}
+              className="text-[11px] font-sans block"
+            >
               {product.installments}
             </span>
           </div>
 
           <Link
             href={`/produto/${product.id}`}
-            className="flex items-center space-x-1.5 text-xs font-heading font-semibold text-white tracking-wider group-hover:text-[#d5c5b2] transition-colors duration-200"
+            style={{ color: "var(--text-heading)" }}
+            className="flex items-center space-x-1.5 text-xs font-heading font-semibold tracking-wider hover:translate-x-0.5 transition-transform duration-200"
           >
             <span>VER PEÇA</span>
-            <ArrowRight size={13} className="transition-transform duration-200 group-hover:translate-x-1" />
+            <ArrowRight size={13} />
           </Link>
         </div>
       </div>

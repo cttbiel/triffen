@@ -74,18 +74,24 @@ export const ProductView: React.FC<ProductViewProps> = ({
   )}`;
 
   return (
-    <div className="pt-6 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-6 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-colors duration-200">
       {/* Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="mb-8 text-xs font-heading tracking-widest text-[#777] uppercase flex items-center space-x-2">
-        <Link href="/" className="hover:text-white transition-colors duration-200">
+      <nav
+        aria-label="Breadcrumb"
+        style={{ color: "var(--text-muted)" }}
+        className="mb-8 text-xs font-heading tracking-widest uppercase flex items-center space-x-2"
+      >
+        <Link href="/" className="hover:!text-[var(--text-heading)] transition-colors duration-200">
           INÍCIO
         </Link>
         <span>/</span>
-        <Link href="/#colecao" className="hover:text-white transition-colors duration-200">
+        <Link href="/#colecao" className="hover:!text-[var(--text-heading)] transition-colors duration-200">
           DROP I
         </Link>
         <span>/</span>
-        <span className="text-[#d5c5b2] font-semibold">{product.name}</span>
+        <span style={{ color: "var(--text-heading)" }} className="font-semibold">
+          {product.name}
+        </span>
       </nav>
 
       {/* Grid Principal: Galeria à esquerda e Detalhes de compra à direita */}
@@ -99,27 +105,43 @@ export const ProductView: React.FC<ProductViewProps> = ({
         <div className="lg:col-span-5 flex flex-col space-y-6">
           {/* Categoria, SKU e Título */}
           <div>
-            <div className="flex items-center justify-between text-[11px] font-heading tracking-widest text-[#d5c5b2] uppercase mb-1">
-              <span>{product.category}</span>
-              <span className="font-mono text-[#666]">{product.sku}</span>
+            <div className="flex items-center justify-between text-[11px] font-heading tracking-widest uppercase mb-1">
+              <span style={{ color: "var(--accent-sand)" }} className="font-semibold">
+                {product.category}
+              </span>
+              <span style={{ color: "var(--text-muted)" }} className="font-mono opacity-70">
+                {product.sku}
+              </span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-heading font-bold text-white tracking-wide leading-tight">
+            <h1
+              style={{ color: "var(--text-heading)" }}
+              className="text-2xl sm:text-4xl font-heading font-bold tracking-wide leading-tight"
+            >
               {product.name}
             </h1>
           </div>
 
           {/* Preço e Parcelamento */}
-          <div className="p-4 rounded bg-[#131313] border border-[#222222] space-y-2">
+          <div
+            style={{
+              backgroundColor: "var(--bg-surface)",
+              borderColor: "var(--border-main)",
+            }}
+            className="p-4 rounded border space-y-2 shadow-sm"
+          >
             <div className="flex items-baseline space-x-3">
-              <span className="text-2xl sm:text-3xl font-heading font-bold text-white">
+              <span
+                style={{ color: "var(--text-heading)" }}
+                className="text-2xl sm:text-3xl font-heading font-bold"
+              >
                 {product.priceFormatted}
               </span>
-              <span className="text-xs text-[#aaa] font-sans">
+              <span style={{ color: "var(--text-muted)" }} className="text-xs font-sans">
                 {product.installments}
               </span>
             </div>
             <div className="inline-flex items-center space-x-2 bg-[#00c9a7]/10 text-[#00c9a7] border border-[#00c9a7]/20 px-2.5 py-1 rounded text-xs font-heading tracking-wider">
-              <span>PIX</span>
+              <span className="font-bold">PIX</span>
               <span className="font-sans font-medium">{product.pixDiscount}</span>
             </div>
           </div>
@@ -143,30 +165,66 @@ export const ProductView: React.FC<ProductViewProps> = ({
               <MessageCircle size={20} />
               <span>GARANTIR NO WHATSAPP</span>
             </a>
-            <p className="text-[11px] text-center text-[#777] font-sans">
+            <p
+              style={{ color: "var(--text-muted)" }}
+              className="text-[11px] text-center font-sans"
+            >
               Atendimento exclusivo • Confirmação de estoque e chave PIX/Cartão imediata
             </p>
           </div>
 
           {/* Selos de Confiança */}
-          <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#1e1e1e] text-center text-[10px] sm:text-xs font-heading tracking-wider text-[#aaa]">
-            <div className="p-2 rounded bg-[#141414] border border-[#222] flex flex-col items-center gap-1">
-              <Truck size={16} className="text-[#d5c5b2]" />
+          <div
+            style={{ borderColor: "var(--border-subtle)" }}
+            className="grid grid-cols-3 gap-2 pt-2 border-t text-center text-[10px] sm:text-xs font-heading tracking-wider"
+          >
+            <div
+              style={{
+                backgroundColor: "var(--bg-card)",
+                borderColor: "var(--border-main)",
+                color: "var(--text-body)",
+              }}
+              className="p-2.5 rounded border flex flex-col items-center gap-1 shadow-sm"
+            >
+              <Truck size={16} className="text-[#00c9a7]" />
               <span>ENVIO EM 24H</span>
             </div>
-            <div className="p-2 rounded bg-[#141414] border border-[#222] flex flex-col items-center gap-1">
-              <RotateCcw size={16} className="text-[#d5c5b2]" />
+            <div
+              style={{
+                backgroundColor: "var(--bg-card)",
+                borderColor: "var(--border-main)",
+                color: "var(--text-body)",
+              }}
+              className="p-2.5 rounded border flex flex-col items-center gap-1 shadow-sm"
+            >
+              <RotateCcw size={16} className="text-[#00c9a7]" />
               <span>1ª TROCA GRÁTIS</span>
             </div>
-            <div className="p-2 rounded bg-[#141414] border border-[#222] flex flex-col items-center gap-1">
-              <ShieldCheck size={16} className="text-[#d5c5b2]" />
+            <div
+              style={{
+                backgroundColor: "var(--bg-card)",
+                borderColor: "var(--border-main)",
+                color: "var(--text-body)",
+              }}
+              className="p-2.5 rounded border flex flex-col items-center gap-1 shadow-sm"
+            >
+              <ShieldCheck size={16} className="text-[#00c9a7]" />
               <span>ORIGINAL TRIFFEN</span>
             </div>
           </div>
 
           {/* Simulador de Frete */}
-          <div className="p-4 rounded bg-[#121212] border border-[#222222] space-y-3">
-            <span className="text-xs font-heading tracking-widest text-[#aaa] uppercase block">
+          <div
+            style={{
+              backgroundColor: "var(--bg-card)",
+              borderColor: "var(--border-main)",
+            }}
+            className="p-4 rounded border space-y-3 shadow-sm"
+          >
+            <span
+              style={{ color: "var(--text-muted)" }}
+              className="text-xs font-heading tracking-widest uppercase block"
+            >
               CALCULAR FRETE E PRAZO
             </span>
             <form onSubmit={handleCalculateShipping} className="flex gap-2">
@@ -176,28 +234,50 @@ export const ProductView: React.FC<ProductViewProps> = ({
                 onChange={handleCepChange}
                 placeholder="00000-000"
                 maxLength={9}
-                className="flex-1 bg-[#1a1a1a] border border-[#333] focus:border-[#d5c5b2] rounded px-3 py-2 text-xs text-white placeholder-[#666] outline-none font-mono"
+                style={{
+                  backgroundColor: "var(--bg-input)",
+                  borderColor: "var(--border-main)",
+                  color: "var(--text-heading)",
+                }}
+                className="flex-1 border rounded px-3 py-2 text-xs outline-none font-mono"
               />
               <button
                 type="submit"
                 disabled={isCalculating || cep.replace(/\D/g, "").length !== 8}
-                className="bg-white/10 hover:bg-white text-white hover:text-black font-heading text-xs tracking-wider px-4 py-2 rounded transition-colors duration-200 disabled:opacity-40"
+                style={{
+                  backgroundColor: "var(--text-heading)",
+                  color: "var(--bg-page)",
+                }}
+                className="font-heading text-xs tracking-wider px-4 py-2 rounded transition-opacity duration-200 disabled:opacity-40 font-semibold"
               >
                 {isCalculating ? "..." : "CALCULAR"}
               </button>
             </form>
 
             {shippingResult && (
-              <div className="pt-2 text-xs space-y-1.5 border-t border-[#222] font-sans">
-                <div className="flex justify-between text-[#ccc]">
+              <div
+                style={{ borderColor: "var(--border-subtle)" }}
+                className="pt-2 text-xs space-y-1.5 border-t font-sans"
+              >
+                <div
+                  style={{ color: "var(--text-body)" }}
+                  className="flex justify-between"
+                >
                   <span>⚡ SEDEX Expresso:</span>
-                  <strong className="text-white">{shippingResult.sedex}</strong>
+                  <strong style={{ color: "var(--text-heading)" }}>
+                    {shippingResult.sedex}
+                  </strong>
                 </div>
-                <div className="flex justify-between text-[#ccc]">
+                <div
+                  style={{ color: "var(--text-body)" }}
+                  className="flex justify-between"
+                >
                   <span>📦 PAC Econômico:</span>
-                  <strong className="text-white">{shippingResult.pac}</strong>
+                  <strong style={{ color: "var(--text-heading)" }}>
+                    {shippingResult.pac}
+                  </strong>
                 </div>
-                <div className="flex justify-between text-[#00c9a7] pt-1">
+                <div className="flex justify-between text-[#00c9a7] pt-1 font-semibold">
                   <span>✨ Frete Grátis Triffen:</span>
                   <strong>Compras acima de R$ 299</strong>
                 </div>
@@ -206,12 +286,16 @@ export const ProductView: React.FC<ProductViewProps> = ({
           </div>
 
           {/* Acordeons Técnicos de Informação */}
-          <div className="divide-y divide-[#202020] border-y border-[#202020] text-xs font-sans">
+          <div
+            style={{ borderColor: "var(--border-main)" }}
+            className="divide-y border-y text-xs font-sans"
+          >
             {/* Descrição */}
-            <div className="py-3">
+            <div style={{ borderColor: "var(--border-subtle)" }} className="py-3">
               <button
                 onClick={() => toggleAccordion("desc")}
-                className="w-full flex items-center justify-between font-heading tracking-wider text-[#ccc] hover:text-white uppercase py-1"
+                style={{ color: "var(--text-heading)" }}
+                className="w-full flex items-center justify-between font-heading tracking-wider uppercase py-1"
               >
                 <span>Descrição &amp; Conceito</span>
                 <ChevronDown
@@ -222,17 +306,21 @@ export const ProductView: React.FC<ProductViewProps> = ({
                 />
               </button>
               {openAccordions.desc && (
-                <p className="mt-2 text-[#999] leading-relaxed font-light font-sans">
+                <p
+                  style={{ color: "var(--text-muted)" }}
+                  className="mt-2 leading-relaxed font-light font-sans"
+                >
                   {product.description}
                 </p>
               )}
             </div>
 
             {/* Detalhes Técnicos */}
-            <div className="py-3">
+            <div style={{ borderColor: "var(--border-subtle)" }} className="py-3">
               <button
                 onClick={() => toggleAccordion("details")}
-                className="w-full flex items-center justify-between font-heading tracking-wider text-[#ccc] hover:text-white uppercase py-1"
+                style={{ color: "var(--text-heading)" }}
+                className="w-full flex items-center justify-between font-heading tracking-wider uppercase py-1"
               >
                 <span>Ficha Técnica &amp; Composição</span>
                 <ChevronDown
@@ -243,7 +331,10 @@ export const ProductView: React.FC<ProductViewProps> = ({
                 />
               </button>
               {openAccordions.details && (
-                <ul className="mt-2 space-y-1 text-[#999] list-disc list-inside font-light font-sans">
+                <ul
+                  style={{ color: "var(--text-muted)" }}
+                  className="mt-2 space-y-1 list-disc list-inside font-light font-sans"
+                >
                   {product.details.map((item, idx) => (
                     <li key={idx}>{item}</li>
                   ))}
@@ -252,10 +343,11 @@ export const ProductView: React.FC<ProductViewProps> = ({
             </div>
 
             {/* Cuidados e Lavagem */}
-            <div className="py-3">
+            <div style={{ borderColor: "var(--border-subtle)" }} className="py-3">
               <button
                 onClick={() => toggleAccordion("care")}
-                className="w-full flex items-center justify-between font-heading tracking-wider text-[#ccc] hover:text-white uppercase py-1"
+                style={{ color: "var(--text-heading)" }}
+                className="w-full flex items-center justify-between font-heading tracking-wider uppercase py-1"
               >
                 <span>Guia de Cuidados &amp; Conservação</span>
                 <ChevronDown
@@ -266,7 +358,10 @@ export const ProductView: React.FC<ProductViewProps> = ({
                 />
               </button>
               {openAccordions.care && (
-                <ul className="mt-2 space-y-1 text-[#999] list-disc list-inside font-light font-sans">
+                <ul
+                  style={{ color: "var(--text-muted)" }}
+                  className="mt-2 space-y-1 list-disc list-inside font-light font-sans"
+                >
                   {product.care.map((item, idx) => (
                     <li key={idx}>{item}</li>
                   ))}
@@ -275,10 +370,11 @@ export const ProductView: React.FC<ProductViewProps> = ({
             </div>
 
             {/* Envio e Devoluções */}
-            <div className="py-3">
+            <div style={{ borderColor: "var(--border-subtle)" }} className="py-3">
               <button
                 onClick={() => toggleAccordion("shipping")}
-                className="w-full flex items-center justify-between font-heading tracking-wider text-[#ccc] hover:text-white uppercase py-1"
+                style={{ color: "var(--text-heading)" }}
+                className="w-full flex items-center justify-between font-heading tracking-wider uppercase py-1"
               >
                 <span>Envio &amp; Garantia de Troca</span>
                 <ChevronDown
@@ -289,7 +385,10 @@ export const ProductView: React.FC<ProductViewProps> = ({
                 />
               </button>
               {openAccordions.shipping && (
-                <p className="mt-2 text-[#999] leading-relaxed font-light font-sans">
+                <p
+                  style={{ color: "var(--text-muted)" }}
+                  className="mt-2 leading-relaxed font-light font-sans"
+                >
                   {product.shippingInfo}
                 </p>
               )}
@@ -300,14 +399,21 @@ export const ProductView: React.FC<ProductViewProps> = ({
 
       {/* Produtos Relacionados */}
       {relatedProducts.length > 0 && (
-        <section className="mt-24 pt-16 border-t border-[#1e1e1e]">
+        <section
+          style={{ borderColor: "var(--border-main)" }}
+          className="mt-24 pt-16 border-t"
+        >
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-xl sm:text-2xl font-heading font-bold text-white tracking-wide">
+            <h2
+              style={{ color: "var(--text-heading)" }}
+              className="text-xl sm:text-2xl font-heading font-bold tracking-wide"
+            >
               COMPLETE SEU LOOK / OUTROS MODELOS
             </h2>
             <Link
               href="/#colecao"
-              className="text-xs font-heading tracking-wider text-[#d5c5b2] hover:text-white"
+              style={{ color: "var(--accent-sand)" }}
+              className="text-xs font-heading tracking-wider hover:underline"
             >
               VER TODOS &rarr;
             </Link>

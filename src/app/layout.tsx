@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://triffen.vercel.app"),
@@ -25,13 +26,36 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="dark-mode" suppressHydrationWarning>
+      <head>
+        {/* Script inline executado antes do primeiro paint para evitar Flash de Tema ao navegar ou recarregar */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('triffen-theme');
+                  if (saved === 'light-mode') {
+                    document.documentElement.classList.remove('dark-mode');
+                    document.documentElement.classList.add('light-mode');
+                  } else {
+                    document.documentElement.classList.remove('light-mode');
+                    document.documentElement.classList.add('dark-mode');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         suppressHydrationWarning
-        className="bg-[#0b0b0b] text-[#f5f5f5] antialiased min-h-screen flex flex-col selection:bg-[#d5c5b2] selection:text-black"
+        className="antialiased min-h-screen flex flex-col selection:bg-[#d5c5b2] selection:text-black transition-colors duration-200"
       >
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
