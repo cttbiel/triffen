@@ -43,7 +43,7 @@ export const LookbookGrid: React.FC = () => {
           {/* Foto Principal de Destaque: Praia / Cerca */}
           <div className="md:col-span-7 relative group overflow-hidden rounded bg-[#141414] aspect-[4/5] sm:aspect-[16/11] border border-black/10 shadow-sm">
             <Image
-              src="/assets/lookbook_fence.jpg"
+              src="/assets/lookbook_fence.webp"
               alt="Modelos vestindo Triffen Drop I diante da orla"
               fill
               sizes="(max-width: 768px) 100vw, 60vw"
@@ -59,7 +59,7 @@ export const LookbookGrid: React.FC = () => {
                   PERSPECTIVA &amp; HORIZONTE
                 </p>
                 <p className="text-xs text-[#aaa] font-sans font-light mt-0.5">
-                  T-Shirts Oversized Bege e Marrom
+                  T-Shirts Street Bege e Marrom
                 </p>
               </div>
               <Link
@@ -77,7 +77,7 @@ export const LookbookGrid: React.FC = () => {
             {/* Foto 2: Trilha / Rochas */}
             <div className="relative group overflow-hidden rounded bg-[#141414] aspect-[4/3] flex-1 border border-black/10 shadow-sm">
               <Image
-                src="/assets/lookbook_model_trail.jpg"
+                src="/assets/lookbook_model_trail.webp"
                 alt="Modelo Triffen com calça cargo e camiseta marrom na trilha"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
@@ -105,7 +105,7 @@ export const LookbookGrid: React.FC = () => {
             {/* Foto 3: Street Sticker Culture */}
             <div className="relative group overflow-hidden rounded bg-[#141414] aspect-[4/3] flex-1 border border-black/10 shadow-sm">
               <Image
-                src="/assets/lookbook_urban_sticker.jpg"
+                src="/assets/lookbook_urban_sticker.webp"
                 alt="Adesivo Triffen em pilar de concreto urbano"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"

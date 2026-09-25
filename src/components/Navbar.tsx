@@ -6,9 +6,11 @@ import Image from "next/image";
 import { ShoppingBag, Sun, Moon, Menu, X, ArrowRight } from "lucide-react";
 import { TRIFFEN_WHATSAPP_PHONE, getAllProducts } from "@/data/products";
 import { useTheme } from "@/context/ThemeContext";
+import { useCart } from "@/context/CartContext";
 
 export const Navbar: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
+  const { totalItems, openCart } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const totalProducts = getAllProducts().length;
@@ -33,7 +35,7 @@ export const Navbar: React.FC = () => {
         className="border-b border-[#222222]/30 py-2 px-4 text-center text-[11px] font-heading tracking-widest uppercase transition-colors duration-200"
       >
         <p>
-          🚚 <strong>Frete Grátis</strong> acima de R$ 299 | DROP I / ESSENTIALS &amp; HEADWEAR LIBERADOS
+          🚚 <strong>Frete e Entrega a Combinar</strong> via WhatsApp | DROP I / ESSENTIALS &amp; HEADWEAR LIBERADOS
         </p>
       </div>
 
@@ -43,7 +45,7 @@ export const Navbar: React.FC = () => {
           backgroundColor: "var(--nav-bg)",
           borderColor: scrolled ? "var(--border-main)" : "transparent",
         }}
-        className={`sticky top-0 z-50 transition-all duration-300 border-b backdrop-blur-md ${
+        className={`sticky top-0 z-40 transition-all duration-300 border-b backdrop-blur-md ${
           scrolled ? "py-3 shadow-xl" : "py-4"
         }`}
       >
@@ -54,8 +56,8 @@ export const Navbar: React.FC = () => {
               <Image
                 src={
                   isDark
-                    ? "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png"
-                    : "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-PRETA.png"
+                    ? "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-BRANCA.webp"
+                    : "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-PRETA.webp"
                 }
                 alt="TRIFFEN"
                 fill
@@ -68,6 +70,13 @@ export const Navbar: React.FC = () => {
 
           {/* Links Centrais Desktop */}
           <div className="hidden md:flex items-center space-x-8 text-xs font-heading tracking-widest uppercase">
+            <Link
+              href="/"
+              style={{ color: "var(--text-muted)" }}
+              className="hover:!text-[var(--text-heading)] transition-colors duration-200"
+            >
+              INÍCIO
+            </Link>
             <Link
               href="/#colecao"
               style={{ color: "var(--text-muted)" }}
@@ -116,19 +125,25 @@ export const Navbar: React.FC = () => {
               {isDark ? <Sun size={17} /> : <Moon size={17} />}
             </button>
 
-            <Link
-              href="/#colecao"
+            {/* Botão de Sacola / Carrinho */}
+            <button
+              onClick={openCart}
               style={{
-                borderColor: "var(--border-main)",
-                backgroundColor: "var(--bg-pill)",
+                borderColor: totalItems > 0 ? "var(--accent-sand)" : "var(--border-main)",
+                backgroundColor: totalItems > 0 ? "var(--bg-surface)" : "var(--bg-pill)",
                 color: "var(--text-heading)",
               }}
-              className="flex items-center space-x-2 text-xs font-heading tracking-wider py-1.5 px-3 rounded-full border hover:scale-105 transition-all duration-200"
-              aria-label="Ver catálogo de produtos"
+              className="flex items-center space-x-2 text-xs font-heading tracking-wider py-1.5 px-3 rounded-full border hover:scale-105 transition-all duration-200 shadow-sm"
+              aria-label="Abrir sacola de compras"
             >
               <ShoppingBag size={15} />
-              <span className="font-semibold">{totalProducts} PEÇAS</span>
-            </Link>
+              <span className="font-semibold">
+                {totalItems > 0 ? `${totalItems} NA SACOLA` : "SACOLA"}
+              </span>
+              {totalItems > 0 && (
+                <span className="w-2 h-2 rounded-full bg-[#00c9a7] animate-pulse"></span>
+              )}
+            </button>
 
             {/* Botão Menu Hambúrguer Mobile */}
             <button
@@ -157,6 +172,18 @@ export const Navbar: React.FC = () => {
             className="md:hidden border-t px-6 py-8 space-y-6 animate-in slide-in-from-top-4 duration-200"
           >
             <nav className="flex flex-col space-y-4 text-sm font-heading tracking-widest uppercase">
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  color: "var(--text-heading)",
+                  borderColor: "var(--border-subtle)",
+                }}
+                className="flex items-center justify-between py-2 border-b"
+              >
+                <span>INÍCIO</span>
+                <span className="text-[10px] text-[var(--accent-sand)]">HOME</span>
+              </Link>
               <Link
                 href="/#colecao"
                 onClick={() => setMobileMenuOpen(false)}

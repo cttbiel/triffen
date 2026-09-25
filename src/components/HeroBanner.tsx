@@ -19,10 +19,10 @@ interface HeroPanel {
 const PANELS: HeroPanel[] = [
   {
     id: "bege",
-    name: "T-Shirt Oversized Bege",
+    name: "T-Shirt Street Bege",
     category: "DROP I",
     code: "01",
-    image: "/assets/TRIFFEN_camisa_bege_modelo_f.jpg",
+    image: "/assets/TRIFFEN_camisa_bege_modelo_f.webp",
     href: "/produto/bege",
     // Centraliza perfeitamente a modelo feminina e o bordado Triffen
     objectPositionDesktop: "28% 25%",
@@ -30,20 +30,20 @@ const PANELS: HeroPanel[] = [
   },
   {
     id: "roxa",
-    name: "T-Shirt Oversized Roxa",
+    name: "T-Shirt Street Roxa",
     category: "DROP I",
     code: "02",
-    image: "/assets/TRIFFEN_camisa_roxa_modeloM_frente.JPG",
+    image: "/assets/TRIFFEN_camisa_roxa_modeloM_frente.webp",
     href: "/produto/roxa",
     objectPositionDesktop: "center 22%",
     objectPositionMobile: "center 18%",
   },
   {
     id: "marrom",
-    name: "T-Shirt Oversized Marrom",
+    name: "T-Shirt Street Marrom",
     category: "DROP I",
     code: "03",
-    image: "/assets/JHI_modelo_costas_marrom.JPG",
+    image: "/assets/JHI_modelo_costas_marrom.webp",
     href: "/produto/marrom",
     objectPositionDesktop: "center 30%",
     objectPositionMobile: "center 25%",
@@ -53,7 +53,7 @@ const PANELS: HeroPanel[] = [
     name: "Campanha Duo Lifestyle",
     category: "EDITORIAL",
     code: "04",
-    image: "/assets/hero_duo.jpg",
+    image: "/assets/hero_duo.webp",
     href: "/#lookbook",
     // Centraliza perfeitamente o Jean e sua namorada no deck da orla
     objectPositionDesktop: "38% 25%",

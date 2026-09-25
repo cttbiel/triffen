@@ -8,7 +8,8 @@ import { SizeSelector } from "@/components/SizeSelector";
 import { StickyPurchaseBar } from "@/components/StickyPurchaseBar";
 import { ProductCard } from "@/components/ProductCard";
 import { TRIFFEN_WHATSAPP_PHONE } from "@/data/products";
-import { MessageCircle, ShieldCheck, Truck, RotateCcw, ChevronDown } from "lucide-react";
+import { MessageCircle, ShieldCheck, Truck, RotateCcw, ChevronDown, ShoppingBag } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 interface ProductViewProps {
   product: Product;
@@ -19,17 +20,10 @@ export const ProductView: React.FC<ProductViewProps> = ({
   product,
   relatedProducts,
 }) => {
+  const { addItem } = useCart();
   const isHeadwear = product.id === "bone-5panel";
   const defaultSize = isHeadwear ? "ÚNICO" : product.sizes[2]?.size || product.sizes[0]?.size || "G";
   const [selectedSize, setSelectedSize] = useState(defaultSize);
-
-  // Simulador de Frete
-  const [cep, setCep] = useState("");
-  const [shippingResult, setShippingResult] = useState<null | {
-    sedex: string;
-    pac: string;
-  }>(null);
-  const [isCalculating, setIsCalculating] = useState(false);
 
   // Accordions retráteis
   const [openAccordions, setOpenAccordions] = useState({
@@ -43,31 +37,7 @@ export const ProductView: React.FC<ProductViewProps> = ({
     setOpenAccordions((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const handleCalculateShipping = (e: React.FormEvent) => {
-    e.preventDefault();
-    const cleanCep = cep.replace(/\D/g, "");
-    if (cleanCep.length !== 8) return;
-
-    setIsCalculating(true);
-    setTimeout(() => {
-      setShippingResult({
-        sedex: "R$ 22,90 (Chega em 1-2 dias úteis)",
-        pac: "R$ 14,90 (Chega em 4-6 dias úteis)",
-      });
-      setIsCalculating(false);
-    }, 400);
-  };
-
-  const handleCepChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let val = e.target.value.replace(/\D/g, "");
-    if (val.length > 8) val = val.slice(0, 8);
-    if (val.length > 5) {
-      val = val.replace(/^(\d{5})(\d)/, "$1-$2");
-    }
-    setCep(val);
-  };
-
-  // Gerador de mensagem WhatsApp
+  // Gerador de mensagem WhatsApp direto
   const rawMessage = `Olá, Triffen! 👋\n\nQuero garantir o *${product.name}* no tamanho *${selectedSize}* (${product.priceFormatted}).\n\nComo posso prosseguir com o pagamento e envio?`;
   const whatsappUrl = `https://wa.me/${TRIFFEN_WHATSAPP_PHONE}?text=${encodeURIComponent(
     rawMessage
@@ -154,22 +124,38 @@ export const ProductView: React.FC<ProductViewProps> = ({
             isHeadwear={isHeadwear}
           />
 
-          {/* Botão de Compra Primária (WhatsApp) */}
-          <div className="space-y-2">
+          {/* Botões de Ação de Compra */}
+          <div className="space-y-2.5">
+            {/* 1. Adicionar à Sacola */}
+            <button
+              type="button"
+              onClick={() => addItem(product, selectedSize)}
+              style={{
+                backgroundColor: "var(--text-heading)",
+                color: "var(--bg-page)",
+              }}
+              className="w-full flex items-center justify-center space-x-2.5 font-heading font-bold text-xs sm:text-sm tracking-widest py-4 px-6 rounded shadow-lg transition-all duration-200 hover:opacity-90 active:scale-[0.99]"
+            >
+              <ShoppingBag size={18} />
+              <span>ADICIONAR À SACOLA</span>
+            </button>
+
+            {/* 2. Comprar Direto no WhatsApp */}
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center space-x-3 bg-[#25D366] hover:bg-[#20ba5a] text-black font-heading font-bold text-sm sm:text-base tracking-widest py-4 px-6 rounded shadow-xl transition-all duration-200 hover:scale-[1.01]"
+              className="w-full flex items-center justify-center space-x-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-black font-heading font-bold text-xs sm:text-sm tracking-widest py-3.5 px-6 rounded shadow-md transition-all duration-200"
             >
-              <MessageCircle size={20} />
-              <span>GARANTIR NO WHATSAPP</span>
+              <MessageCircle size={18} />
+              <span>GARANTIR DIRETO NO WHATSAPP</span>
             </a>
+
             <p
               style={{ color: "var(--text-muted)" }}
               className="text-[11px] text-center font-sans"
             >
-              Atendimento exclusivo • Confirmação de estoque e chave PIX/Cartão imediata
+              Atendimento exclusivo • Confirmação de estoque e chave PIX imediata
             </p>
           </div>
 
@@ -213,76 +199,45 @@ export const ProductView: React.FC<ProductViewProps> = ({
             </div>
           </div>
 
-          {/* Simulador de Frete */}
+          {/* Informações de Despacho & Entrega Direta */}
           <div
             style={{
               backgroundColor: "var(--bg-card)",
               borderColor: "var(--border-main)",
             }}
-            className="p-4 rounded border space-y-3 shadow-sm"
+            className="p-4 rounded border flex items-center justify-between shadow-sm"
           >
-            <span
-              style={{ color: "var(--text-muted)" }}
-              className="text-xs font-heading tracking-widest uppercase block"
-            >
-              CALCULAR FRETE E PRAZO
-            </span>
-            <form onSubmit={handleCalculateShipping} className="flex gap-2">
-              <input
-                type="text"
-                value={cep}
-                onChange={handleCepChange}
-                placeholder="00000-000"
-                maxLength={9}
-                style={{
-                  backgroundColor: "var(--bg-input)",
-                  borderColor: "var(--border-main)",
-                  color: "var(--text-heading)",
-                }}
-                className="flex-1 border rounded px-3 py-2 text-xs outline-none font-mono"
-              />
-              <button
-                type="submit"
-                disabled={isCalculating || cep.replace(/\D/g, "").length !== 8}
-                style={{
-                  backgroundColor: "var(--text-heading)",
-                  color: "var(--bg-page)",
-                }}
-                className="font-heading text-xs tracking-wider px-4 py-2 rounded transition-opacity duration-200 disabled:opacity-40 font-semibold"
-              >
-                {isCalculating ? "..." : "CALCULAR"}
-              </button>
-            </form>
-
-            {shippingResult && (
+            <div className="flex items-center space-x-3">
               <div
-                style={{ borderColor: "var(--border-subtle)" }}
-                className="pt-2 text-xs space-y-1.5 border-t font-sans"
+                style={{
+                  backgroundColor: "var(--bg-pill)",
+                  color: "var(--accent-sand)",
+                }}
+                className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
               >
-                <div
-                  style={{ color: "var(--text-body)" }}
-                  className="flex justify-between"
-                >
-                  <span>⚡ SEDEX Expresso:</span>
-                  <strong style={{ color: "var(--text-heading)" }}>
-                    {shippingResult.sedex}
-                  </strong>
-                </div>
-                <div
-                  style={{ color: "var(--text-body)" }}
-                  className="flex justify-between"
-                >
-                  <span>📦 PAC Econômico:</span>
-                  <strong style={{ color: "var(--text-heading)" }}>
-                    {shippingResult.pac}
-                  </strong>
-                </div>
-                <div className="flex justify-between text-[#00c9a7] pt-1 font-semibold">
-                  <span>✨ Frete Grátis Triffen:</span>
-                  <strong>Compras acima de R$ 299</strong>
-                </div>
+                <Truck size={17} />
               </div>
-            )}
+              <div>
+                <span
+                  style={{ color: "var(--text-heading)" }}
+                  className="text-xs font-heading font-semibold tracking-wider block"
+                >
+                  ENVIO DE SERRA - ES
+                </span>
+                <span
+                  style={{ color: "var(--text-muted)" }}
+                  className="text-[11px] font-sans"
+                >
+                  Frete e prazo combinados diretamente no WhatsApp
+                </span>
+              </div>
+            </div>
+            <span
+              style={{ color: "var(--accent-sand)" }}
+              className="text-[10px] font-heading font-bold px-2 py-1 rounded bg-black/10 dark:bg-white/10 uppercase"
+            >
+              A COMBINAR
+            </span>
           </div>
 
           {/* Acordeons Técnicos de Informação */}

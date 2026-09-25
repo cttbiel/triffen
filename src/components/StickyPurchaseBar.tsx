@@ -3,9 +3,10 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Product } from "@/types/product";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ShoppingBag } from "lucide-react";
 import { TRIFFEN_WHATSAPP_PHONE } from "@/data/products";
 import { useTheme } from "@/context/ThemeContext";
+import { useCart } from "@/context/CartContext";
 
 interface StickyPurchaseBarProps {
   product: Product;
@@ -17,6 +18,7 @@ export const StickyPurchaseBar: React.FC<StickyPurchaseBarProps> = ({
   selectedSize,
 }) => {
   const { isDark } = useTheme();
+  const { addItem } = useCart();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -79,16 +81,33 @@ export const StickyPurchaseBar: React.FC<StickyPurchaseBarProps> = ({
           </div>
         </div>
 
-        {/* CTA do WhatsApp */}
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-shrink-0 inline-flex items-center space-x-2 bg-[#25D366] hover:bg-[#20ba5a] text-black font-heading font-bold text-xs tracking-wider px-5 py-3 rounded shadow-md transition-colors duration-200"
-        >
-          <MessageCircle size={16} />
-          <span>GARANTIR NO WHATSAPP</span>
-        </a>
+        {/* Ações: Sacola e WhatsApp */}
+        <div className="flex items-center space-x-2 flex-shrink-0">
+          <button
+            type="button"
+            onClick={() => addItem(product, selectedSize)}
+            style={{
+              backgroundColor: "var(--text-heading)",
+              color: "var(--bg-page)",
+            }}
+            className="inline-flex items-center space-x-1.5 font-heading font-bold text-xs tracking-wider px-3.5 sm:px-4 py-2.5 sm:py-3 rounded shadow-md transition-opacity hover:opacity-90 active:scale-95"
+          >
+            <ShoppingBag size={15} />
+            <span className="hidden sm:inline">ADICIONAR À SACOLA</span>
+            <span className="sm:hidden">SACOLA</span>
+          </button>
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-1.5 bg-[#25D366] hover:bg-[#20ba5a] text-black font-heading font-bold text-xs tracking-wider px-3.5 sm:px-4 py-2.5 sm:py-3 rounded shadow-md transition-colors duration-200"
+          >
+            <MessageCircle size={15} />
+            <span className="hidden sm:inline">GARANTIR NO WHATSAPP</span>
+            <span className="sm:hidden">COMPRAR</span>
+          </a>
+        </div>
       </div>
     </aside>
   );

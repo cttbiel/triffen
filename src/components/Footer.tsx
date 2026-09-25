@@ -117,8 +117,8 @@ export const Footer: React.FC = () => {
                 <Image
                   src={
                     isDark
-                      ? "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png"
-                      : "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-PRETA.png"
+                      ? "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-BRANCA.webp"
+                      : "/assets/TIPOGRAFIA-TRIFFEN-TRANSPARENTE-JHI-PRETA.webp"
                   }
                   alt="Triffen"
                   fill

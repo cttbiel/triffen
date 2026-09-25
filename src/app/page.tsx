@@ -65,7 +65,7 @@ export default function Home() {
         text={[
           "PUT YOUR MIND, MAKE IT HAPPEN",
           "5-PANEL CAP STEALTH BLACK",
-          "MALHA PESADA 220G",
+          "MALHA CONFORTJET 180G",
           "DROP I / ESSENTIALS",
           "O STREETWEAR QUE CONQUISTA",
           "BRAZILIAN LUXURY",
@@ -111,7 +111,7 @@ export default function Home() {
             <div className="relative w-28 h-28 opacity-85 hover:opacity-100 transition-opacity duration-300">
               <div className="dark:hidden relative w-full h-full">
                 <Image
-                  src="/assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-PRETA.png"
+                  src="/assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-PRETA.webp"
                   alt="Emblema Triffen"
                   fill
                   sizes="112px"
@@ -120,7 +120,7 @@ export default function Home() {
               </div>
               <div className="hidden dark:block relative w-full h-full">
                 <Image
-                  src="/assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-BRANCA.png"
+                  src="/assets/LOGO-TRIFFEN-TRANSPARENTE-JHI-BRANCA.webp"
                   alt="Emblema Triffen"
                   fill
                   sizes="112px"
